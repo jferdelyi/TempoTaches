@@ -1,11 +1,11 @@
 # Sound buttons
 #
-# Not really reusable buttons, use to play Tempo/Tache
+# Not really reusable buttons, use to play Tempo/Taches
 extends HBoxContainer
 
 
 # Private variables
-onready var _tache_sound : AudioStreamPlayer2D = $Tache/TacheSound
+onready var _taches_sound : AudioStreamPlayer2D = $Taches/TachesSound
 onready var _tempo_sound : AudioStreamPlayer2D = $Tempo/TempoSound
 
 
@@ -14,7 +14,7 @@ func _on_Tempo_pressed() -> void:
 	_tempo_sound.play()
 
 
-# Play tache when the button tache is pressed
-func _on_Tache_pressed() -> void:
-	_tache_sound.play()
+# Play taches when the button taches is pressed
+func _on_Taches_pressed() -> void:
+	_taches_sound.play()
 

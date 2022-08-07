@@ -29,6 +29,8 @@ func _ready() -> void:
 	_name_label.text = audio_name
 	_slider.min_value = min_value
 	_slider.max_value = max_value
+	if _slider.value == default_value:
+		_on_Slider_value_changed(default_value)
 	set_value(default_value)
 
 

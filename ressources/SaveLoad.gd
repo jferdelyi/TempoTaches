@@ -22,8 +22,9 @@ export var delay_value : bool;
 
 
 # Save data (return error code)
-func save_data() -> int:
-	return ResourceSaver.save(get_save_path(), self)
+func save_data() -> void:
+	if ResourceSaver.save(get_save_path(), self) != 0:
+		printerr("Error while saving data")
 
 
 # Save data and return if the ressource exists

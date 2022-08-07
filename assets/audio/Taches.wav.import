@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/Tache.wav-9476e832a26a0873b7df8c53435ce36f.sample"
+path="res://.import/Taches.wav-79e72d9595183ee47e19a784a53970f2.sample"
 
 [deps]
 
-source_file="res://assets/audio/Tache.wav"
-dest_files=[ "res://.import/Tache.wav-9476e832a26a0873b7df8c53435ce36f.sample" ]
+source_file="res://assets/audio/Taches.wav"
+dest_files=[ "res://.import/Taches.wav-79e72d9595183ee47e19a784a53970f2.sample" ]
 
 [params]
 

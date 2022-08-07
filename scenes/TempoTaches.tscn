@@ -1,37 +1,42 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/audio/Tempo.wav" type="AudioStream" id=1]
-[ext_resource path="res://assets/audio/Tache.wav" type="AudioStream" id=2]
-[ext_resource path="res://scripts/Buttons.gd" type="Script" id=3]
+[ext_resource path="res://assets/audio/Taches.wav" type="AudioStream" id=2]
+[ext_resource path="res://scripts/TempoTaches.gd" type="Script" id=3]
+[ext_resource path="res://assets/fonts/Montserrat-Bold.tres" type="DynamicFont" id=4]
 
 [node name="Buttons" type="HBoxContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_bottom = -540.0
+rect_min_size = Vector2( 200, 100 )
 alignment = 1
 script = ExtResource( 3 )
 
 [node name="Tempo" type="Button" parent="."]
-margin_left = 58.0
 margin_right = 158.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 100, 100 )
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
 text = "Tempo"
 
 [node name="TempoSound" type="AudioStreamPlayer2D" parent="Tempo"]
 position = Vector2( -57, -270 )
 stream = ExtResource( 1 )
 
-[node name="Tache" type="Button" parent="."]
+[node name="Taches" type="Button" parent="."]
 margin_left = 162.0
-margin_right = 262.0
+margin_right = 320.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 100, 100 )
-text = "Tache"
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+text = "Tâches"
 
-[node name="TacheSound" type="AudioStreamPlayer2D" parent="Tache"]
+[node name="TachesSound" type="AudioStreamPlayer2D" parent="Taches"]
 position = Vector2( -161, -270 )
 stream = ExtResource( 2 )
 
 [connection signal="pressed" from="Tempo" to="." method="_on_Tempo_pressed"]
-[connection signal="pressed" from="Tache" to="." method="_on_Tache_pressed"]
+[connection signal="pressed" from="Taches" to="." method="_on_Taches_pressed"]
