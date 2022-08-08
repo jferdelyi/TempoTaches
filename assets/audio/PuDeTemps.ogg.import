@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/PuDeTemps.ogg-6e56fbff8f498eb21b255f365bca85d0.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/PuDeTemps.ogg"
+dest_files=[ "res://.import/PuDeTemps.ogg-6e56fbff8f498eb21b255f365bca85d0.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

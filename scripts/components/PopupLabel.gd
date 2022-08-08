@@ -57,7 +57,8 @@ func start(text : String) -> void:
 	if not _pop_tween_in.start():
 		printerr("Error when starting the popup animation")
 	yield(_pop_tween_in, "tween_completed")
-	_pop_tween_in.stop_all();
+	if not _pop_tween_in.stop_all():
+		printerr("Error when stopping the popup animation")
 	
 	# Fade out
 	if not _pop_tween_out.interpolate_property(_style, "bg_color", _default_color, _start_color, animation_duration, Tween.TRANS_LINEAR, Tween.EASE_IN):

@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=19 format=2]
+[gd_resource type="Theme" load_steps=23 format=2]
 
 [ext_resource path="res://assets/fonts/OpenSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/fonts/OpenSans-Regular.tres" type="DynamicFont" id=2]
@@ -58,7 +58,7 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[sub_resource type="StyleBoxFlat" id=9]
+[sub_resource type="StyleBoxFlat" id=15]
 draw_center = false
 border_width_left = 2
 border_width_top = 2
@@ -74,7 +74,18 @@ expand_margin_right = 1.0
 expand_margin_top = 1.0
 expand_margin_bottom = 1.0
 
-[sub_resource type="StyleBoxFlat" id=8]
+[sub_resource type="StyleBoxFlat" id=16]
+content_margin_left = 12.0
+content_margin_right = 12.0
+content_margin_top = 2.0
+content_margin_bottom = 2.0
+bg_color = Color( 0.0431373, 0.0470588, 0.12549, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id=17]
 content_margin_left = 12.0
 content_margin_right = 12.0
 content_margin_top = 2.0
@@ -92,11 +103,32 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
+[sub_resource type="StyleBoxFlat" id=18]
+bg_color = Color( 0.0431373, 0.0470588, 0.12549, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id=19]
+bg_color = Color( 0.247059, 0.588235, 0.886275, 1 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0.8, 0.8, 0.8, 0 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
 [sub_resource type="DynamicFont" id=7]
 size = 24
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 1 )
+
+[sub_resource type="MeshTexture" id=14]
 
 [resource]
 default_font = ExtResource( 2 )
@@ -115,10 +147,15 @@ HSlider/icons/tick = SubResource( 11 )
 HSlider/styles/grabber_area = SubResource( 12 )
 HSlider/styles/grabber_area_highlight = SubResource( 13 )
 HSlider/styles/slider = SubResource( 10 )
-LineEdit/styles/focus = SubResource( 9 )
-LineEdit/styles/normal = SubResource( 8 )
+LineEdit/fonts/font = ExtResource( 2 )
+LineEdit/styles/focus = SubResource( 15 )
+LineEdit/styles/normal = SubResource( 16 )
+LineEdit/styles/read_only = SubResource( 17 )
 Panel/styles/panel = SubResource( 2 )
 PanelContainer/styles/panel = SubResource( 2 )
+ProgressBar/styles/bg = SubResource( 18 )
+ProgressBar/styles/fg = SubResource( 19 )
 RichTextLabel/fonts/bold_font = SubResource( 7 )
 RichTextLabel/fonts/italics_font = SubResource( 7 )
 RichTextLabel/fonts/normal_font = SubResource( 7 )
+SpinBox/icons/updown = SubResource( 14 )
