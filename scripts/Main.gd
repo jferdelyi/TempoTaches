@@ -10,12 +10,11 @@ var _save := SaveLoad.new()
 onready var _reverb : HBoxContainer = $OptionsPanel/UI/Reverb
 onready var _pitch : HBoxContainer = $OptionsPanel/UI/Pitch
 onready var _delay : HBoxContainer = $OptionsPanel/UI/Delay
-
-onready var _popup : Panel = $Popup
+onready var _popup : Control = $Popup
 
 
 # Load data
-func _on_SaveLoadButtons_load_pressed() -> void:
+func _on_SavePanel_load_pressed() -> void:
 	_save = SaveLoad.load_data()
 	_reverb.set_value(_save.reverb_value)
 	_pitch.set_value(_save.pitch_value)
@@ -24,7 +23,7 @@ func _on_SaveLoadButtons_load_pressed() -> void:
 
 
 # Save data
-func _on_SaveLoadButtons_save_pressed() -> void:
+func _on_SavePanel_save_pressed() -> void:
 	_save.reverb_value = _reverb.get_value()
 	_save.pitch_value = _pitch.get_value()
 	_save.delay_value = _delay.get_value()
@@ -33,7 +32,7 @@ func _on_SaveLoadButtons_save_pressed() -> void:
 
 
 # Reset default value
-func _on_SaveLoadButtons_reset_pressed() -> void:
+func _on_SavePanel_reset_pressed() -> void:
 	_reverb.reset_value()
 	_pitch.reset_value()
 	_delay.reset_value()

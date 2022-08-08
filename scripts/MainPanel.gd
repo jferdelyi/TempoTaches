@@ -1,12 +1,13 @@
 # Sound buttons
 #
 # Not really reusable buttons, use to play Tempo/Taches
-extends HBoxContainer
+class_name MainPanel
+extends Panel
 
 
 # Private variables
-onready var _taches_sound : AudioStreamPlayer2D = $Taches/TachesSound
-onready var _tempo_sound : AudioStreamPlayer2D = $Tempo/TempoSound
+onready var _taches_sound : AudioStreamPlayer2D = $Buttons/Taches/TachesSound
+onready var _tempo_sound : AudioStreamPlayer2D = $Buttons/Tempo/TempoSound
 
 
 # Play tempo when the button tempo is pressed

@@ -9,19 +9,37 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Panel",
+"class": "MainPanel",
+"language": "GDScript",
+"path": "res://scripts/MainPanel.gd"
+}, {
+"base": "Control",
+"class": "PopupLabel",
+"language": "GDScript",
+"path": "res://scripts/components/PopupLabel.gd"
+}, {
 "base": "Resource",
 "class": "SaveLoad",
 "language": "GDScript",
 "path": "res://ressources/SaveLoad.gd"
 }, {
-"base": "Control",
-"class": "SaveLoadButtons",
+"base": "Panel",
+"class": "SavePanel",
 "language": "GDScript",
-"path": "res://scripts/SaveLoadButtons.gd"
+"path": "res://scripts/SavePanel.gd"
+}, {
+"base": "Panel",
+"class": "TextPanel",
+"language": "GDScript",
+"path": "res://scripts/components/TextPanel.gd"
 } ]
 _global_script_class_icons={
+"MainPanel": "",
+"PopupLabel": "",
 "SaveLoad": "",
-"SaveLoadButtons": ""
+"SavePanel": "",
+"TextPanel": ""
 }
 
 [application]

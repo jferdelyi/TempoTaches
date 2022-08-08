@@ -17,7 +17,7 @@ export var min_value : float
 export var max_value : float
 
 
-# Private variables
+# Private variables (oldschool passthrough see TextPanel)
 onready var _audio_effect : AudioEffect = AudioServer.get_bus_effect(audio_bus_index, audio_effect_index)
 onready var _value_label : Label = $Value
 onready var _name_label : Label = $Name

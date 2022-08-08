@@ -4,8 +4,8 @@
 # save_button.connect("pressed", self, "emit_signal", ["save_pressed"])
 # Because there is no warning and I think it's cleaner.
 # Performance should be the same
-class_name SaveLoadButtons
-extends Control
+class_name SavePanel
+extends Panel
 
 
 # Signals
