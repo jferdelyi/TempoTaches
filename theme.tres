@@ -2,10 +2,10 @@
 
 [ext_resource path="res://assets/fonts/OpenSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/fonts/OpenSans-Regular.tres" type="DynamicFont" id=2]
-[ext_resource path="res://assets/ui/OFF(enabled).png" type="Texture" id=3]
-[ext_resource path="res://assets/ui/ON(disabled).png" type="Texture" id=4]
-[ext_resource path="res://assets/ui/ON(enabled).png" type="Texture" id=5]
-[ext_resource path="res://assets/ui/OFF(disabled).png" type="Texture" id=6]
+[ext_resource path="res://assets/ui/ON(enabled).svg" type="Texture" id=3]
+[ext_resource path="res://assets/ui/OFF(enabled).svg" type="Texture" id=4]
+[ext_resource path="res://assets/ui/ON(disabled).svg" type="Texture" id=5]
+[ext_resource path="res://assets/ui/OFF(disabled).svg" type="Texture" id=6]
 
 [sub_resource type="StyleBoxEmpty" id=6]
 
@@ -48,10 +48,10 @@ corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id=10]
 bg_color = Color( 0.0431373, 0.0470588, 0.12549, 1 )
-border_width_left = 8
-border_width_top = 8
-border_width_right = 8
-border_width_bottom = 8
+border_width_left = 9
+border_width_top = 9
+border_width_right = 9
+border_width_bottom = 9
 border_color = Color( 0.0431373, 0.0470588, 0.12549, 1 )
 corner_radius_top_left = 8
 corner_radius_top_right = 8
@@ -104,10 +104,10 @@ Button/styles/focus = SubResource( 6 )
 Button/styles/hover = SubResource( 3 )
 Button/styles/normal = SubResource( 4 )
 Button/styles/pressed = SubResource( 5 )
-CheckButton/icons/off = ExtResource( 3 )
+CheckButton/icons/off = ExtResource( 4 )
 CheckButton/icons/off_disabled = ExtResource( 6 )
-CheckButton/icons/on = ExtResource( 5 )
-CheckButton/icons/on_disabled = ExtResource( 4 )
+CheckButton/icons/on = ExtResource( 3 )
+CheckButton/icons/on_disabled = ExtResource( 5 )
 HSlider/icons/grabber = SubResource( 11 )
 HSlider/icons/grabber_disabled = SubResource( 11 )
 HSlider/icons/grabber_highlight = SubResource( 11 )

@@ -33,6 +33,8 @@ et à faire vivre vos ..."
 [node name="MainPanel" parent="." instance=ExtResource( 1 )]
 
 [node name="OptionsPanel" parent="." instance=ExtResource( 4 )]
+margin_top = -161.0
+margin_bottom = -64.0
 
 [node name="SavePanel" parent="." instance=ExtResource( 3 )]
 
