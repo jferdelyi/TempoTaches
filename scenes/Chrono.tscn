@@ -92,7 +92,7 @@ text = "Stop"
 
 [node name="PuDeTemps" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource( 3 )
-volume_db = -15.0
+volume_db = -10.0
 
 [connection signal="time_out" from="." to="." method="_on_Chrono_time_out"]
 [connection signal="value_changed" from="Container/Time/Minutes" to="." method="_on_Minutes_value_changed"]

@@ -61,7 +61,7 @@ func _on_Stop_pressed() -> void:
 	_inner_time = _default_time
 	_enable()
 	_pu_de_temps.stop()
-	_pu_de_temps.volume_db = -15
+	_pu_de_temps.volume_db = -10
 
 
 # Start/Pause
@@ -71,7 +71,7 @@ func _on_StartPause_pressed() -> void:
 	else:
 		_enable()
 	_pu_de_temps.stop()
-	_pu_de_temps.volume_db = -15
+	_pu_de_temps.volume_db = -10
 
 
 # Timeout
@@ -113,4 +113,6 @@ func _on_Seconds_value_changed(value: float) -> void:
 
 func _on_PuDeTemps_finished() -> void:
 	_pu_de_temps.volume_db += 2
+	if _pu_de_temps.volume_db > 10:
+		_pu_de_temps.volume_db = 10
 	_pu_de_temps.play()
