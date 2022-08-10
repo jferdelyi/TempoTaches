@@ -33,9 +33,6 @@ func _ready() -> void:
 
 # Timer behavior
 func _physics_process(delta: float) -> void:
-	if not _initialized:
-		_default_time = _inner_time
-		_initialized = true
 	if _active:
 		_inner_time -= delta
 		if _inner_time <= 0:
@@ -119,9 +116,10 @@ func _on_PuDeTemps_finished() -> void:
 func _compute_inner_time() -> void:
 	_inner_time = _minutes_spin_box.value * 60
 	_inner_time += _seconds_spin_box.value
-	_end_time = _inner_time
-	if _default_time <= 0:
+	if _inner_time <= 0:
+		_inner_time = 1
 		_seconds_spin_box.value = 1
+	_end_time = _inner_time
 
 
 # Set minutes
@@ -165,6 +163,10 @@ func set_time(minutes : float, seconds : float) -> void:
 	_compute_inner_time()
 
 
+func init_time() -> void:
+	_default_time = _inner_time
+
+
 # Reset
 func reset_value() -> void:
 	set_minutes(1.0)
@@ -176,9 +178,6 @@ func default_value() -> void:
 	var tmp : float = _default_time / 60.0
 	var minutes : float = floor(tmp)
 	var seconds : float = (tmp - minutes) * 60
-	print(_default_time)
-	print(minutes)
-	print(seconds)
 	set_minutes(minutes)
 	set_seconds(seconds)
 

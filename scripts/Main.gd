@@ -29,8 +29,8 @@ func _load_data() -> void:
 		_reverb.set_value(saved_data.reverb_value)
 		_pitch.set_value(saved_data.pitch_value)
 		_delay.set_value(saved_data.delay_value)
-		_chrono.set_minutes(saved_data.minutes_value)
-		_chrono.set_seconds(saved_data.seconds_value)
+		_chrono.set_time(saved_data.minutes_value, saved_data.seconds_value)
+		_chrono.init_time()
 
 
 # Load data
@@ -47,6 +47,7 @@ func _on_SavePanel_save_pressed() -> void:
 	_save.minutes_value = _chrono.get_minutes()
 	_save.seconds_value = _chrono.get_seconds()
 	_save.save_data()
+	_chrono.init_time()
 	_popup.start("Saved")
 
 
