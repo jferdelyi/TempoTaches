@@ -19,6 +19,8 @@ onready var _label : Label = $Label
 onready var _record : Button = $Record
 onready var _reset : Button = $Reset
 onready var _player : AudioStreamPlayer = $AudioStreamPlayer
+onready var _in : AudioStreamPlayer = $InAudio
+onready var _out : AudioStreamPlayer = $OutAudio
 
 
 func _ready():
@@ -44,6 +46,7 @@ func get_sound() -> AudioStream:
 
 func _on_Record_button_down() -> void:
 	_effect.set_recording_active(true)
+	_in.play()
 
 
 func _on_Record_button_up() -> void:
@@ -51,6 +54,7 @@ func _on_Record_button_up() -> void:
 	_effect.set_recording_active(false)
 	_on_Play_pressed()
 	emit_signal("sound_updated")
+	_out.play()
 
 
 func _on_Reset_pressed() -> void:

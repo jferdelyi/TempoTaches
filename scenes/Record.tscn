@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scripts/Record.gd" type="Script" id=1]
 [ext_resource path="res://assets/ui/Play.png" type="Texture" id=2]
 [ext_resource path="res://assets/ui/Record.png" type="Texture" id=3]
+[ext_resource path="res://assets/audio/In.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/audio/Out.wav" type="AudioStream" id=5]
 
 [sub_resource type="AudioStreamMicrophone" id=1]
 
@@ -49,6 +51,12 @@ autoplay = true
 stream = SubResource( 1 )
 autoplay = true
 bus = "Record"
+
+[node name="InAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="OutAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
 
 [connection signal="button_down" from="Record" to="." method="_on_Record_button_down"]
 [connection signal="button_up" from="Record" to="." method="_on_Record_button_up"]
