@@ -16,9 +16,16 @@ const SAVE_PATH = "user://save"
 
 
 # Data to save
-export var reverb_value : float;
-export var pitch_value : float;
-export var delay_value : bool;
+export var reverb_value : float
+export var pitch_value : float
+export var delay_value : bool
+
+export var minutes_value : float
+export var seconds_value : float
+
+export var tempo_sound : AudioStream
+export var taches_sound : AudioStream
+export var temps_sound : AudioStream
 
 
 # Save data (return error code)
@@ -34,8 +41,7 @@ static func save_data_exists() -> bool:
 
 # Load data
 static func load_data() -> Resource:
-	var save_path := get_save_path()
-	return ResourceLoader.load(save_path, "", true)
+	return ResourceLoader.load(get_save_path(), "", true)
 
 
 # This function allows us to save and load a text resource in debug builds and a

@@ -9,25 +9,10 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Panel",
-"class": "MainPanel",
-"language": "GDScript",
-"path": "res://scripts/MainPanel.gd"
-}, {
-"base": "Control",
-"class": "PopupLabel",
-"language": "GDScript",
-"path": "res://scripts/components/PopupLabel.gd"
-}, {
 "base": "Resource",
 "class": "SaveLoad",
 "language": "GDScript",
 "path": "res://ressources/SaveLoad.gd"
-}, {
-"base": "Panel",
-"class": "SavePanel",
-"language": "GDScript",
-"path": "res://scripts/SavePanel.gd"
 }, {
 "base": "Panel",
 "class": "TextPanel",
@@ -35,10 +20,7 @@ _global_script_classes=[ {
 "path": "res://scripts/components/TextPanel.gd"
 } ]
 _global_script_class_icons={
-"MainPanel": "",
-"PopupLabel": "",
 "SaveLoad": "",
-"SavePanel": "",
 "TextPanel": ""
 }
 
@@ -46,7 +28,12 @@ _global_script_class_icons={
 
 config/name="Tempo/Tâches"
 run/main_scene="res://scenes/Main.tscn"
+boot_splash/image="res://logo_tempo_taches_android.png"
 config/icon="res://logo_tempo_taches.png"
+
+[audio]
+
+enable_audio_input=true
 
 [display]
 

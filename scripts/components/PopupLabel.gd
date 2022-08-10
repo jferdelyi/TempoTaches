@@ -1,7 +1,6 @@
 # Popup infos
 #
 # Fadein and fadeout text panel
-class_name PopupLabel
 extends Control
 
 

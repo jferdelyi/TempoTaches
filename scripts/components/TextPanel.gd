@@ -5,12 +5,12 @@ class_name TextPanel
 extends Panel
 
 
-# Private variables
-onready var _label : Label = $Label
-
-
 # public variables
 export(String, MULTILINE) onready var text setget set_text, get_text
+
+
+# Private variables
+onready var _label : Label = $Label
 
 
 # Set text

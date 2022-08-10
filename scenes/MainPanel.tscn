@@ -41,7 +41,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Tempo"
 
 [node name="TempoSound" type="AudioStreamPlayer2D" parent="Buttons/Tempo"]
-position = Vector2( -57, -270 )
+position = Vector2( 142, 0 )
 stream = ExtResource( 3 )
 
 [node name="Taches" type="Button" parent="Buttons"]
@@ -54,7 +54,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Tâches"
 
 [node name="TachesSound" type="AudioStreamPlayer2D" parent="Buttons/Taches"]
-position = Vector2( -161, -270 )
+position = Vector2( -142, 0 )
 stream = ExtResource( 4 )
 
 [connection signal="pressed" from="Buttons/Tempo" to="." method="_on_Tempo_pressed"]

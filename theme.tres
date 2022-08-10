@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=23 format=2]
+[gd_resource type="Theme" load_steps=27 format=2]
 
 [ext_resource path="res://assets/fonts/OpenSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/fonts/OpenSans-Regular.tres" type="DynamicFont" id=2]
@@ -6,6 +6,13 @@
 [ext_resource path="res://assets/ui/OFF(enabled).svg" type="Texture" id=4]
 [ext_resource path="res://assets/ui/ON(disabled).svg" type="Texture" id=5]
 [ext_resource path="res://assets/ui/OFF(disabled).svg" type="Texture" id=6]
+
+[sub_resource type="StyleBoxFlat" id=24]
+bg_color = Color( 0.188235, 0.188235, 0.286275, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxEmpty" id=6]
 
@@ -80,6 +87,10 @@ content_margin_right = 12.0
 content_margin_top = 2.0
 content_margin_bottom = 2.0
 bg_color = Color( 0.0431373, 0.0470588, 0.12549, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
@@ -128,10 +139,36 @@ use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 1 )
 
-[sub_resource type="MeshTexture" id=14]
+[sub_resource type="MeshTexture" id=20]
+
+[sub_resource type="StyleBoxFlat" id=21]
+bg_color = Color( 0.0352941, 0.0392157, 0.12549, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id=22]
+content_margin_left = 10.0
+content_margin_right = 10.0
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+bg_color = Color( 0.188235, 0.188235, 0.286275, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+
+[sub_resource type="StyleBoxFlat" id=23]
+content_margin_left = 10.0
+content_margin_right = 10.0
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+bg_color = Color( 0.0675, 0.0997485, 0.148438, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
 
 [resource]
 default_font = ExtResource( 2 )
+Button/styles/disabled = SubResource( 24 )
 Button/styles/focus = SubResource( 6 )
 Button/styles/hover = SubResource( 3 )
 Button/styles/normal = SubResource( 4 )
@@ -148,6 +185,7 @@ HSlider/styles/grabber_area = SubResource( 12 )
 HSlider/styles/grabber_area_highlight = SubResource( 13 )
 HSlider/styles/slider = SubResource( 10 )
 LineEdit/fonts/font = ExtResource( 2 )
+LineEdit/icons/clear = null
 LineEdit/styles/focus = SubResource( 15 )
 LineEdit/styles/normal = SubResource( 16 )
 LineEdit/styles/read_only = SubResource( 17 )
@@ -158,4 +196,7 @@ ProgressBar/styles/fg = SubResource( 19 )
 RichTextLabel/fonts/bold_font = SubResource( 7 )
 RichTextLabel/fonts/italics_font = SubResource( 7 )
 RichTextLabel/fonts/normal_font = SubResource( 7 )
-SpinBox/icons/updown = SubResource( 14 )
+SpinBox/icons/updown = SubResource( 20 )
+TabContainer/styles/panel = SubResource( 21 )
+TabContainer/styles/tab_bg = SubResource( 22 )
+TabContainer/styles/tab_fg = SubResource( 23 )

@@ -1,7 +1,6 @@
 # Sound buttons
 #
 # Not really reusable buttons, use to play Tempo/Taches
-class_name MainPanel
 extends Panel
 
 
@@ -18,4 +17,12 @@ func _on_Tempo_pressed() -> void:
 # Play taches when the button taches is pressed
 func _on_Taches_pressed() -> void:
 	_taches_sound.play()
+
+
+func set_tempo(audio : AudioStream):
+	_tempo_sound.stream = audio
+
+
+func set_taches(audio : AudioStream):
+	_taches_sound.stream = audio
 
