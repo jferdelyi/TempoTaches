@@ -184,3 +184,8 @@ func default_value() -> void:
 
 func set_sound(audio : AudioStream) -> void:
 	_pu_de_temps.stream = audio
+
+
+func get_sound() -> AudioStream:
+	return _pu_de_temps.stream
+

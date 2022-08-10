@@ -19,10 +19,17 @@ func _on_Taches_pressed() -> void:
 	_taches_sound.play()
 
 
-func set_tempo(audio : AudioStream):
+func set_tempo_sound(audio : AudioStream):
 	_tempo_sound.stream = audio
 
 
-func set_taches(audio : AudioStream):
+func set_taches_sound(audio : AudioStream):
 	_taches_sound.stream = audio
 
+
+func get_tempo_sound() -> AudioStream:
+	return _tempo_sound.stream
+
+
+func get_taches_sound() -> AudioStream:
+	return _taches_sound.stream
