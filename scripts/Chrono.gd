@@ -65,7 +65,6 @@ func _on_Stop_pressed() -> void:
 	_pu_de_temps.volume_db = 0
 	_start.text = "Start"
 	_end = false
-	default_value()
 
 
 # Start/Pause
@@ -86,7 +85,6 @@ func _on_StartPause_pressed() -> void:
 
 # Timeout
 func _on_Chrono_time_out() -> void:
-	default_value()
 	_pu_de_temps.play()
 	_enable()
 	_start.text = "+1 minute"
@@ -109,7 +107,6 @@ func _on_PuDeTemps_finished() -> void:
 	if _pu_de_temps.volume_db > 10:
 		_pu_de_temps.volume_db = 10
 	_pu_de_temps.play()
-
 
 
 # Compute inner time

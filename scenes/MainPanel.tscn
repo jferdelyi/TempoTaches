@@ -43,6 +43,7 @@ text = "Tempo"
 [node name="TempoSound" type="AudioStreamPlayer2D" parent="Buttons/Tempo"]
 position = Vector2( 142, 0 )
 stream = ExtResource( 3 )
+bus = "Effects"
 
 [node name="Taches" type="Button" parent="Buttons"]
 margin_left = 142.0
@@ -56,6 +57,7 @@ text = "Tâches"
 [node name="TachesSound" type="AudioStreamPlayer2D" parent="Buttons/Taches"]
 position = Vector2( -142, 0 )
 stream = ExtResource( 4 )
+bus = "Effects"
 
 [connection signal="pressed" from="Buttons/Tempo" to="." method="_on_Tempo_pressed"]
 [connection signal="pressed" from="Buttons/Taches" to="." method="_on_Taches_pressed"]
