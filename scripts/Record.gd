@@ -4,7 +4,7 @@
 extends HBoxContainer
 
 
-signal sound_updated
+signal sound_updated(AudioStream)
 
 
 export(String, MULTILINE) onready var text setget set_text, get_text
@@ -19,8 +19,6 @@ onready var _label : Label = $Label
 onready var _record : Button = $Record
 onready var _reset : Button = $Reset
 onready var _player : AudioStreamPlayer = $AudioStreamPlayer
-onready var _in : AudioStreamPlayer = $InAudio
-onready var _out : AudioStreamPlayer = $OutAudio
 
 
 func _ready():
@@ -44,23 +42,37 @@ func get_sound() -> AudioStream:
 	return _player.stream
 
 
+func reset() -> void:
+	_on_Reset_pressed()
+
+
+func set_sound(audio : AudioStream) -> void:
+	_player.stream = audio
+	_recording = audio
+	emit_signal("sound_updated", _player.stream)
+
+
 func _on_Record_button_down() -> void:
 	_effect.set_recording_active(true)
-	_in.play()
+	var os_name = OS.get_name()
+	if os_name == "Android" or os_name == "iOS" or os_name == "HTML5":
+		Input.vibrate_handheld(50)
 
 
 func _on_Record_button_up() -> void:
 	_recording = _effect.get_recording()
 	_effect.set_recording_active(false)
 	_on_Play_pressed()
-	emit_signal("sound_updated")
-	_out.play()
+	emit_signal("sound_updated", _player.stream)
+	var os_name = OS.get_name()
+	if os_name == "Android" or os_name == "iOS" or os_name == "HTML5":
+		Input.vibrate_handheld(50)
 
 
 func _on_Reset_pressed() -> void:
 	_player.stream = default_audio
 	_recording = default_audio
-	emit_signal("sound_updated")
+	emit_signal("sound_updated", _player.stream)
 
 
 func _on_Play_pressed() -> void:

@@ -33,6 +33,7 @@ config/icon="res://logo_tempo_taches.png"
 
 [audio]
 
+driver=""
 enable_audio_input=true
 
 [display]
@@ -80,6 +81,9 @@ common/enable_pause_aware_picking=true
 [rendering]
 
 quality/driver/driver_name="GLES2"
+vram_compression/import_s3tc=false
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
+vram_compression/import_pvrtc=true
+gles2/compatibility/disable_half_float.iOS=false
 environment/default_environment="res://default_env.tres"

@@ -13,6 +13,7 @@ onready var _minutes_spin_box : SpinBox = $Container/Time/Minutes
 onready var _seconds_spin_box : SpinBox = $Container/Time/Seconds
 onready var _progress : ProgressBar = $Container/ProgressBar
 onready var _pu_de_temps : AudioStreamPlayer2D = $PuDeTemps
+onready var _hs : AudioStreamPlayer2D = $HS
 onready var _start : Button = $Container/Buttons/StartPause
 
 var _active : bool = true
@@ -109,6 +110,10 @@ func _on_PuDeTemps_finished() -> void:
 	_pu_de_temps.play()
 
 
+func _on_HS_pressed() -> void:
+	_hs.play()
+
+
 # Compute inner time
 func _compute_inner_time() -> void:
 	_inner_time = _minutes_spin_box.value * 60
@@ -179,10 +184,18 @@ func default_value() -> void:
 	set_seconds(seconds)
 
 
-func set_sound(audio : AudioStream) -> void:
+func set_pu_de_temps_sound(audio : AudioStream) -> void:
 	_pu_de_temps.stream = audio
 
 
-func get_sound() -> AudioStream:
+func get_pu_de_temps_sound() -> AudioStream:
 	return _pu_de_temps.stream
+
+
+func set_hs_sound(audio : AudioStream) -> void:
+	_hs.stream = audio
+
+
+func get_hs_sound() -> AudioStream:
+	return _hs.stream
 

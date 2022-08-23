@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/fonts/Montserrat-Bold.tres" type="DynamicFont" id=1]
 [ext_resource path="res://scripts/Chrono.gd" type="Script" id=2]
 [ext_resource path="res://assets/audio/PuDeTemps.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/audio/HS.wav" type="AudioStream" id=4]
 
 [sub_resource type="Theme" id=4]
 default_font = ExtResource( 1 )
@@ -74,22 +75,33 @@ size_flags_horizontal = 3
 size_flags_vertical = 0
 
 [node name="StartPause" type="Button" parent="Container/Buttons"]
-margin_right = 148.0
+margin_right = 97.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 0, 40 )
 size_flags_horizontal = 3
 text = "Start"
 
 [node name="Stop" type="Button" parent="Container/Buttons"]
-margin_left = 152.0
-margin_right = 300.0
+margin_left = 101.0
+margin_right = 198.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 0, 40 )
 size_flags_horizontal = 3
 text = "Stop"
 
+[node name="HS" type="Button" parent="Container/Buttons"]
+margin_left = 202.0
+margin_right = 300.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+text = "HS"
+
 [node name="PuDeTemps" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )
+bus = "Effects"
+
+[node name="HS" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
 bus = "Effects"
 
 [connection signal="time_out" from="." to="." method="_on_Chrono_time_out"]
@@ -97,4 +109,5 @@ bus = "Effects"
 [connection signal="value_changed" from="Container/Time/Seconds" to="." method="_on_Seconds_value_changed"]
 [connection signal="pressed" from="Container/Buttons/StartPause" to="." method="_on_StartPause_pressed"]
 [connection signal="pressed" from="Container/Buttons/Stop" to="." method="_on_Stop_pressed"]
+[connection signal="pressed" from="Container/Buttons/HS" to="." method="_on_HS_pressed"]
 [connection signal="finished" from="PuDeTemps" to="." method="_on_PuDeTemps_finished"]
