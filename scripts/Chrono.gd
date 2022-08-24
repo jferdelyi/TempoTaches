@@ -16,25 +16,30 @@ onready var _pu_de_temps : AudioStreamPlayer2D = $PuDeTemps
 onready var _hs : AudioStreamPlayer2D = $HS
 onready var _start : Button = $Container/Buttons/StartPause
 
-var _active : bool = true
+
 var _default_time : float = 90.0
 var _end_time : float = 90.0
 var _inner_time : float = 0.0
-var _end : bool = false
+
 var _initialized : bool = false
 
+const STOPPED : int = 0
+const STARTED : int = 1
+const FINISHED : int = 2
+const PAUSED : int = 3
+var _state : int = STOPPED
 
 # Set enabled
 func _ready() -> void:
 	_inner_time = _default_time
 	if _minutes_spin_box.value >= 60:
 		_minutes_spin_box.value = 59
-	_enable()
+	_enable_spin_boxes()
 
 
 # Timer behavior
 func _physics_process(delta: float) -> void:
-	if _active:
+	if _state == STARTED:
 		_inner_time -= delta
 		if _inner_time <= 0:
 			_inner_time = 0
@@ -43,43 +48,47 @@ func _physics_process(delta: float) -> void:
 
 
 # Enable spinbox
-func _enable() -> void:
-	if _active:
-		_active = false
-		_minutes_spin_box.editable = true
-		_seconds_spin_box.editable = true
+func _enable_spin_boxes() -> void:
+	_minutes_spin_box.editable = true
+	_seconds_spin_box.editable = true
 
 
 # Disable spinbox
-func _disable() -> void:
-	if not _active:
-		_active = true
-		_minutes_spin_box.editable = false
-		_seconds_spin_box.editable = false
+func _disable_spin_boxes() -> void:
+	_minutes_spin_box.editable = false
+	_seconds_spin_box.editable = false
 
 
 # Stop button
 func _on_Stop_pressed() -> void:
 	_inner_time = _default_time
-	_enable()
+	_set_spin_boxes(_inner_time)
+	_enable_spin_boxes()
 	_pu_de_temps.stop()
 	_pu_de_temps.volume_db = 0
 	_start.text = "Start"
-	_end = false
+	_state = STOPPED
 
 
 # Start/Pause
 func _on_StartPause_pressed() -> void:
-	if _end:
+	if _state == FINISHED:
 		set_time(1, 0)
-		_end = false
-	
-	if not _active:
 		_start.text = "Pause"
-		_disable()
+		_disable_spin_boxes()
+		_state = STARTED
+	
+	elif _state != STARTED:
+		_start.text = "Pause"
+		_disable_spin_boxes()
+		_state = STARTED
+		init_time()
+		
 	else:
 		_start.text = "Start"
-		_enable()
+		_enable_spin_boxes()
+		_state = PAUSED
+	
 	_pu_de_temps.stop()
 	_pu_de_temps.volume_db = 0
 
@@ -87,9 +96,9 @@ func _on_StartPause_pressed() -> void:
 # Timeout
 func _on_Chrono_time_out() -> void:
 	_pu_de_temps.play()
-	_enable()
+	_enable_spin_boxes()
 	_start.text = "+1 minute"
-	_end = true
+	_state = FINISHED
 
 
 # Minutes changed
@@ -122,6 +131,14 @@ func _compute_inner_time() -> void:
 		_inner_time = 1
 		_seconds_spin_box.value = 1
 	_end_time = _inner_time
+
+
+func _set_spin_boxes(time : float) -> void:
+	var tmp : float = time / 60.0
+	var minutes : float = floor(tmp)
+	var seconds : float = (tmp - minutes) * 60
+	set_minutes(minutes)
+	set_seconds(seconds)
 
 
 # Set minutes
@@ -177,11 +194,7 @@ func reset_value() -> void:
 
 # Default
 func default_value() -> void:
-	var tmp : float = _default_time / 60.0
-	var minutes : float = floor(tmp)
-	var seconds : float = (tmp - minutes) * 60
-	set_minutes(minutes)
-	set_seconds(seconds)
+	_set_spin_boxes(_default_time)
 
 
 func set_pu_de_temps_sound(audio : AudioStream) -> void:
