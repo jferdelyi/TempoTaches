@@ -34,7 +34,7 @@ margin_top = 24.0
 margin_right = 280.0
 margin_bottom = 44.0
 rect_pivot_offset = Vector2( -566, -251 )
-text = "Tache"
+text = "Tâches"
 
 [node name="PuDeTemps" parent="UI" instance=ExtResource( 1 )]
 anchor_right = 0.0

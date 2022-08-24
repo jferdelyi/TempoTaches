@@ -12,6 +12,7 @@ signal time_out
 onready var _minutes_spin_box : SpinBox = $Container/Time/Minutes
 onready var _seconds_spin_box : SpinBox = $Container/Time/Seconds
 onready var _progress : ProgressBar = $Container/ProgressBar
+onready var _time_left : Label = $Container/ProgressBar/TimeLeft
 onready var _pu_de_temps : AudioStreamPlayer2D = $PuDeTemps
 onready var _hs : AudioStreamPlayer2D = $HS
 onready var _start : Button = $Container/Buttons/StartPause
@@ -35,6 +36,7 @@ func _ready() -> void:
 	if _minutes_spin_box.value >= 60:
 		_minutes_spin_box.value = 59
 	_enable_spin_boxes()
+	_inner_time_formated()
 
 
 # Timer behavior
@@ -45,6 +47,7 @@ func _physics_process(delta: float) -> void:
 			_inner_time = 0
 			emit_signal("time_out")
 	_progress.value = (1 - (_inner_time / _end_time)) * 100
+	_inner_time_formated()
 
 
 # Enable spinbox
@@ -68,6 +71,7 @@ func _on_Stop_pressed() -> void:
 	_pu_de_temps.volume_db = 0
 	_start.text = "Start"
 	_state = STOPPED
+	_time_left.visible = false
 
 
 # Start/Pause
@@ -77,17 +81,20 @@ func _on_StartPause_pressed() -> void:
 		_start.text = "Pause"
 		_disable_spin_boxes()
 		_state = STARTED
+		_time_left.visible = true
 	
 	elif _state != STARTED:
 		_start.text = "Pause"
 		_disable_spin_boxes()
 		_state = STARTED
 		init_time()
+		_time_left.visible = true
 		
 	else:
 		_start.text = "Start"
 		_enable_spin_boxes()
 		_state = PAUSED
+		_time_left.visible = false
 	
 	_pu_de_temps.stop()
 	_pu_de_temps.volume_db = 0
@@ -114,8 +121,8 @@ func _on_Seconds_value_changed(value : float) -> void:
 # PuDeTemps finished
 func _on_PuDeTemps_finished() -> void:
 	_pu_de_temps.volume_db += 2
-	if _pu_de_temps.volume_db > 10:
-		_pu_de_temps.volume_db = 10
+	if _pu_de_temps.volume_db > 20:
+		_pu_de_temps.volume_db = 20
 	_pu_de_temps.play()
 
 
@@ -140,6 +147,23 @@ func _set_spin_boxes(time : float) -> void:
 	set_minutes(minutes)
 	set_seconds(seconds)
 
+
+func _inner_time_formated() -> void:
+	var tmp : float = _inner_time / 60.0
+	var minutes : float = floor(tmp)
+	var seconds : float = ceil((tmp - minutes) * 60)
+	
+	if minutes == 0 and seconds == 60:
+		minutes = 1
+		seconds = 0
+	
+	var minutes_string : String = str(minutes)
+	var seconds_string : String = str(seconds)
+	if minutes < 10:
+		minutes_string = "0" + str(minutes)
+	if seconds < 10:
+		seconds_string = "0" + str(seconds)
+	_time_left.text = minutes_string + ":" + seconds_string
 
 # Set minutes
 func set_minutes(minutes : float) -> void:
