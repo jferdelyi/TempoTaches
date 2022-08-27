@@ -32,7 +32,7 @@ func _ready() -> void:
 	var time : Dictionary = OS.get_datetime()
 	if time["day"] >= 25 or time["day"] <= 4:
 		_cra.visible = true
-	if not _trim_threshold.connect("value_changed", self, "_on_SliderValue_value_changed"):
+	if _trim_threshold.connect("value_changed", self, "_on_SliderValue_value_changed"):
 		print("Connect error")
 	_on_SliderValue_value_changed(_trim_threshold.get_value())
 

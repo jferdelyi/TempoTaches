@@ -116,20 +116,18 @@ func _on_Record_button_down() -> void:
 func _on_Record_button_up() -> void:
 	_recording = _audio_trim(_effect.get_recording())
 	_effect.set_recording_active(false)
-	_on_Play_pressed()
+	
 	var os_name = OS.get_name()
 	if os_name == "Android" or os_name == "iOS" or os_name == "HTML5":
 		Input.vibrate_handheld(50)
 	
 	if not _recording:
 		_recording = default_audio
-	
-	if not _recording.data.empty():
+	elif not _recording.data.empty():
 		_player.stream = _recording
-	
-	check_audio(_player.stream)
-	_on_Play_pressed()
-	emit_signal("sound_updated", _player.stream)
+		check_audio(_player.stream)
+		_on_Play_pressed()
+		emit_signal("sound_updated", _player.stream)
 
 
 func _on_Reset_pressed() -> void:
