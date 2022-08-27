@@ -25,7 +25,7 @@ margin_bottom = -10.0
 
 [node name="UI" type="VBoxContainer" parent="ScrollUI"]
 margin_right = 268.0
-margin_bottom = 123.0
+margin_bottom = 147.0
 size_flags_horizontal = 3
 
 [node name="TrimValue" parent="ScrollUI/UI" instance=ExtResource( 3 )]
@@ -35,7 +35,7 @@ anchor_bottom = 0.0
 margin_top = 0.0
 margin_right = 268.0
 margin_bottom = 19.0
-value_name = "Trim"
+value_name = "Trim (%)"
 default_value = 10000.0
 max_value = 32768.0
 
@@ -79,8 +79,16 @@ margin_right = 268.0
 margin_bottom = 116.0
 text = "CRA"
 
+[node name="Reset" type="Button" parent="ScrollUI/UI"]
+margin_top = 127.0
+margin_right = 268.0
+margin_bottom = 147.0
+size_flags_horizontal = 3
+text = "Reset"
+
 [connection signal="sound_updated" from="ScrollUI/UI/Tempo" to="." method="_on_Tempo_sound_updated"]
 [connection signal="sound_updated" from="ScrollUI/UI/Taches" to="." method="_on_Taches_sound_updated"]
 [connection signal="sound_updated" from="ScrollUI/UI/PuDeTemps" to="." method="_on_PuDeTemps_sound_updated"]
 [connection signal="sound_updated" from="ScrollUI/UI/HS" to="." method="_on_HS_sound_updated"]
 [connection signal="sound_updated" from="ScrollUI/UI/CRA" to="." method="_on_CRA_sound_updated"]
+[connection signal="pressed" from="ScrollUI/UI/Reset" to="." method="_on_Reset_pressed"]

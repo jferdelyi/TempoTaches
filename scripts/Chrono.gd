@@ -17,18 +17,19 @@ onready var _pu_de_temps : AudioStreamPlayer2D = $PuDeTemps
 onready var _hs : AudioStreamPlayer2D = $HS
 onready var _start : Button = $Container/Buttons/StartPause
 
-
 var _default_time : float = 90.0
 var _end_time : float = 90.0
 var _inner_time : float = 0.0
 
 var _initialized : bool = false
 
+# State machine
 const STOPPED : int = 0
 const STARTED : int = 1
 const FINISHED : int = 2
 const PAUSED : int = 3
 var _state : int = STOPPED
+
 
 # Set enabled
 func _ready() -> void:
@@ -36,7 +37,7 @@ func _ready() -> void:
 	if _minutes_spin_box.value >= 60:
 		_minutes_spin_box.value = 59
 	_enable_spin_boxes()
-	_inner_time_formated()
+	_inner_time_format()
 
 
 # Timer behavior
@@ -47,7 +48,79 @@ func _physics_process(delta: float) -> void:
 			_inner_time = 0
 			emit_signal("time_out")
 	_progress.value = (1 - (_inner_time / _end_time)) * 100
-	_inner_time_formated()
+	_inner_time_format()
+
+
+# Load data from ressource
+func load_data(saved_data : Resource) -> void:
+	_set_time(saved_data.minutes_value, saved_data.seconds_value)
+	_default_time = _inner_time
+
+
+# Load data toressource
+func save_data(saved_data : Resource) -> void:
+	saved_data.minutes_value = _minutes_spin_box.value
+	saved_data.seconds_value = _seconds_spin_box.value
+	_default_time = _inner_time
+
+
+# Reset
+func reset_value() -> void:
+	set_minutes(1.0)
+	set_seconds(30.0)
+
+
+# Default value
+func default_value() -> void:
+	_set_spin_boxes(_default_time)
+
+
+# Set pu de temps sound
+func set_pu_de_temps_sound(audio : AudioStream) -> void:
+	_pu_de_temps.stream = audio
+
+
+# Get pu de temps sound
+func get_pu_de_temps_sound() -> AudioStream:
+	return _pu_de_temps.stream
+
+
+# Set HS sound
+func set_hs_sound(audio : AudioStream) -> void:
+	_hs.stream = audio
+
+
+# Set HS sound
+func get_hs_sound() -> AudioStream:
+	return _hs.stream
+
+
+# Set minutes
+func set_minutes(minutes : float) -> void:
+	if minutes >= 61:
+		_minutes_spin_box.value = 60
+	else:
+		_minutes_spin_box.value = minutes
+	_compute_inner_time()
+
+
+# Get minutes
+func get_minutes() -> float:
+	return _minutes_spin_box.value
+
+
+# Set seconds
+func set_seconds(seconds : float) -> void:
+	if seconds >= 60:
+		_seconds_spin_box.value = 59
+	else:
+		_seconds_spin_box.value = seconds
+	_compute_inner_time()
+
+
+# Get seconds
+func get_seconds() -> float:
+	return _seconds_spin_box.value
 
 
 # Enable spinbox
@@ -77,7 +150,7 @@ func _on_Stop_pressed() -> void:
 # Start/Pause
 func _on_StartPause_pressed() -> void:
 	if _state == FINISHED:
-		set_time(1, 0)
+		_set_time(1, 0)
 		_start.text = "Pause"
 		_disable_spin_boxes()
 		_state = STARTED
@@ -87,7 +160,7 @@ func _on_StartPause_pressed() -> void:
 		_start.text = "Pause"
 		_disable_spin_boxes()
 		_state = STARTED
-		init_time()
+		_default_time = _inner_time
 		_time_left.visible = true
 		
 	else:
@@ -140,6 +213,7 @@ func _compute_inner_time() -> void:
 	_end_time = _inner_time
 
 
+# Set minutes and seconds
 func _set_spin_boxes(time : float) -> void:
 	var tmp : float = time / 60.0
 	var minutes : float = floor(tmp)
@@ -148,7 +222,8 @@ func _set_spin_boxes(time : float) -> void:
 	set_seconds(seconds)
 
 
-func _inner_time_formated() -> void:
+# Format inner time
+func _inner_time_format() -> void:
 	var tmp : float = _inner_time / 60.0
 	var minutes : float = floor(tmp)
 	var seconds : float = ceil((tmp - minutes) * 60)
@@ -165,36 +240,9 @@ func _inner_time_formated() -> void:
 		seconds_string = "0" + str(seconds)
 	_time_left.text = minutes_string + ":" + seconds_string
 
-# Set minutes
-func set_minutes(minutes : float) -> void:
-	if minutes >= 61:
-		_minutes_spin_box.value = 60
-	else:
-		_minutes_spin_box.value = minutes
-	_compute_inner_time()
-
-
-# Get minutes
-func get_minutes() -> float:
-	return _minutes_spin_box.value
-
-
-# Set seconds
-func set_seconds(seconds : float) -> void:
-	if seconds >= 60:
-		_seconds_spin_box.value = 59
-	else:
-		_seconds_spin_box.value = seconds
-	_compute_inner_time()
-
-
-# Get seconds
-func get_seconds() -> float:
-	return _seconds_spin_box.value
-
 
 # Set seconds and minutes
-func set_time(minutes : float, seconds : float) -> void:
+func _set_time(minutes : float, seconds : float) -> void:
 	if minutes >= 61:
 		_minutes_spin_box.value = 60
 	else:
@@ -204,35 +252,4 @@ func set_time(minutes : float, seconds : float) -> void:
 	else:
 		_seconds_spin_box.value = seconds
 	_compute_inner_time()
-
-
-func init_time() -> void:
-	_default_time = _inner_time
-
-
-# Reset
-func reset_value() -> void:
-	set_minutes(1.0)
-	set_seconds(30.0)
-
-
-# Default
-func default_value() -> void:
-	_set_spin_boxes(_default_time)
-
-
-func set_pu_de_temps_sound(audio : AudioStream) -> void:
-	_pu_de_temps.stream = audio
-
-
-func get_pu_de_temps_sound() -> AudioStream:
-	return _pu_de_temps.stream
-
-
-func set_hs_sound(audio : AudioStream) -> void:
-	_hs.stream = audio
-
-
-func get_hs_sound() -> AudioStream:
-	return _hs.stream
 

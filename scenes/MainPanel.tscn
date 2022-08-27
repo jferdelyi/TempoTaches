@@ -1,10 +1,7 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scripts/MainPanel.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/Montserrat-Bold.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://assets/audio/Tempo.wav" type="AudioStream" id=3]
-[ext_resource path="res://assets/audio/Taches.wav" type="AudioStream" id=4]
-[ext_resource path="res://assets/audio/CRA.wav" type="AudioStream" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 resource_local_to_scene = true
@@ -64,7 +61,6 @@ text = "Tempo"
 
 [node name="TempoSound" type="AudioStreamPlayer2D" parent="Buttons/Tempo"]
 position = Vector2( 142, 0 )
-stream = ExtResource( 3 )
 bus = "Effects"
 
 [node name="CRA" type="Button" parent="Buttons"]
@@ -82,7 +78,6 @@ text = "CRA"
 
 [node name="CRASound" type="AudioStreamPlayer2D" parent="Buttons/CRA"]
 position = Vector2( -142, 0 )
-stream = ExtResource( 5 )
 bus = "Effects"
 
 [node name="Taches" type="Button" parent="Buttons"]
@@ -96,7 +91,6 @@ text = "Tâches"
 
 [node name="TachesSound" type="AudioStreamPlayer2D" parent="Buttons/Taches"]
 position = Vector2( -142, 0 )
-stream = ExtResource( 4 )
 bus = "Effects"
 
 [connection signal="pressed" from="Buttons/Tempo" to="." method="_on_Tempo_pressed"]

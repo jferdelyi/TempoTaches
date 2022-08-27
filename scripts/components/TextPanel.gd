@@ -1,11 +1,9 @@
 # Text panel
-#
-# Just a text panel
 class_name TextPanel
 extends Panel
 
 
-# public variables
+# Exposed variables
 export(String, MULTILINE) onready var text setget set_text, get_text
 
 

@@ -11,6 +11,8 @@ wet = 0.0
 resource_name = "Delay"
 tap1/active = false
 tap2/active = false
+feedback/active = true
+feedback/delay_ms = 300.0
 
 [sub_resource type="AudioEffectPitchShift" id=4]
 resource_name = "PitchShift"

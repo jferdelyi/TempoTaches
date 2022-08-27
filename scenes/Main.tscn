@@ -3,7 +3,7 @@
 [ext_resource path="res://scenes/MainPanel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/Main.gd" type="Script" id=2]
 [ext_resource path="res://scenes/SavePanel.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/OptionsPanel.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/SoundOptionsPanel.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/components/TextPanel.tscn" type="PackedScene" id=5]
 [ext_resource path="res://theme.tres" type="Theme" id=6]
 [ext_resource path="res://scenes/components/Popup.tscn" type="PackedScene" id=7]
@@ -63,6 +63,7 @@ margin_bottom = 255.0
 script = ExtResource( 10 )
 
 [node name="SoundOptions" parent="Options" instance=ExtResource( 4 )]
+visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -74,14 +75,13 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="RecordOptions" parent="Options" instance=ExtResource( 9 )]
-visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
-margin_left = 4.0
-margin_top = 41.0
-margin_right = -4.0
-margin_bottom = -4.0
+margin_left = 0.0
+margin_top = 33.0
+margin_right = 0.0
+margin_bottom = 0.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 default_tempo_audio = ExtResource( 12 )

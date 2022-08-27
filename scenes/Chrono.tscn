@@ -1,9 +1,7 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/fonts/Montserrat-Bold.tres" type="DynamicFont" id=1]
 [ext_resource path="res://scripts/Chrono.gd" type="Script" id=2]
-[ext_resource path="res://assets/audio/PuDeTemps.wav" type="AudioStream" id=3]
-[ext_resource path="res://assets/audio/HS.wav" type="AudioStream" id=4]
 [ext_resource path="res://scripts/SpinBoxReleaseFocus.gd" type="Script" id=5]
 
 [sub_resource type="Theme" id=4]
@@ -113,11 +111,9 @@ size_flags_horizontal = 3
 text = "HS"
 
 [node name="PuDeTemps" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 3 )
 bus = "Effects"
 
 [node name="HS" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 4 )
 bus = "Effects"
 
 [connection signal="time_out" from="." to="." method="_on_Chrono_time_out"]

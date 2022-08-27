@@ -14,14 +14,26 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://ressources/SaveLoad.gd"
 }, {
+"base": "Control",
+"class": "SliderValue",
+"language": "GDScript",
+"path": "res://scripts/components/SliderValue.gd"
+}, {
 "base": "Panel",
 "class": "TextPanel",
 "language": "GDScript",
 "path": "res://scripts/components/TextPanel.gd"
+}, {
+"base": "Control",
+"class": "ToggleValue",
+"language": "GDScript",
+"path": "res://scripts/components/ToggleValue.gd"
 } ]
 _global_script_class_icons={
 "SaveLoad": "",
-"TextPanel": ""
+"SliderValue": "",
+"TextPanel": "",
+"ToggleValue": ""
 }
 
 [application]
