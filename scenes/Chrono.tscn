@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/fonts/Montserrat-Bold.tres" type="DynamicFont" id=1]
 [ext_resource path="res://scripts/Chrono.gd" type="Script" id=2]
 [ext_resource path="res://assets/audio/PuDeTemps.wav" type="AudioStream" id=3]
 [ext_resource path="res://assets/audio/HS.wav" type="AudioStream" id=4]
+[ext_resource path="res://scripts/SpinBoxReleaseFocus.gd" type="Script" id=5]
 
 [sub_resource type="Theme" id=4]
 default_font = ExtResource( 1 )
@@ -44,6 +45,7 @@ max_value = 60.0
 value = 1.0
 align = 2
 suffix = "m"
+script = ExtResource( 5 )
 
 [node name="Seconds" type="SpinBox" parent="Container/Time"]
 margin_left = 152.0
@@ -57,6 +59,7 @@ max_value = 59.0
 value = 30.0
 align = 2
 suffix = "s"
+script = ExtResource( 5 )
 
 [node name="ProgressBar" type="ProgressBar" parent="Container"]
 margin_top = 55.0

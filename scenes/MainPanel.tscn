@@ -1,15 +1,37 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scripts/MainPanel.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/Montserrat-Bold.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/audio/Tempo.wav" type="AudioStream" id=3]
 [ext_resource path="res://assets/audio/Taches.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/audio/CRA.wav" type="AudioStream" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 resource_local_to_scene = true
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.688334, 0.318807, 0.318807, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.39234, 0.196583, 0.196583, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.717647, 0.25098, 0.25098, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="MainPanel" type="Panel"]
 anchor_left = 0.5
@@ -45,6 +67,24 @@ position = Vector2( 142, 0 )
 stream = ExtResource( 3 )
 bus = "Effects"
 
+[node name="CRA" type="Button" parent="Buttons"]
+visible = false
+margin_left = 104.0
+margin_right = 176.0
+margin_bottom = 374.0
+rect_min_size = Vector2( 50, 100 )
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/normal = SubResource( 2 )
+text = "CRA"
+
+[node name="CRASound" type="AudioStreamPlayer2D" parent="Buttons/CRA"]
+position = Vector2( -142, 0 )
+stream = ExtResource( 5 )
+bus = "Effects"
+
 [node name="Taches" type="Button" parent="Buttons"]
 margin_left = 142.0
 margin_right = 280.0
@@ -60,4 +100,5 @@ stream = ExtResource( 4 )
 bus = "Effects"
 
 [connection signal="pressed" from="Buttons/Tempo" to="." method="_on_Tempo_pressed"]
+[connection signal="pressed" from="Buttons/CRA" to="." method="_on_CRA_pressed"]
 [connection signal="pressed" from="Buttons/Taches" to="." method="_on_Taches_pressed"]

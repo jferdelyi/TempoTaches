@@ -27,6 +27,9 @@ export var tempo_sound : AudioStream
 export var taches_sound : AudioStream
 export var temps_sound : AudioStream
 export var hs_sound : AudioStream
+export var cra_sound : AudioStream
+
+export var trim_value : int
 
 
 # Save data (return error code)
