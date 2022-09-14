@@ -8,8 +8,8 @@ extends Control
 var _save := SaveLoad.new()
 
 onready var _popup : Control = $Popup
-onready var _chrono : Control = $Chrono
-onready var _main : Panel = $MainPanel
+onready var _chrono : Control = $Container/Chrono
+onready var _main : Panel = $Container/MainPanel
 onready var _sound_options : Panel = $Options/SoundOptions
 onready var _record_options : Panel = $Options/RecordOptions
 
@@ -25,6 +25,8 @@ func _load_data() -> void:
 		_chrono.load_data(saved_data)
 		_sound_options.load_data(saved_data)
 		_record_options.load_data(saved_data)
+	else:
+		_on_SavePanel_reset_pressed()
 
 
 # Load data
@@ -73,4 +75,13 @@ func _on_RecordOptions_temps_sound_updated(new_sound : AudioStream) -> void:
 # Set HS sound
 func _on_RecordOptions_hs_sound_updated(new_sound : AudioStream) -> void:
 	_chrono.set_hs_sound(new_sound)
+
+
+func _on_Options_pressed(toggled : bool) -> void:
+	if not toggled:
+		$Options.rect_position.x = -330
+		$Container.rect_position.x = 10
+	else:
+		$Options.rect_position.x = 10
+		$Container.rect_position.x = 330
 

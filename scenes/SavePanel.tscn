@@ -19,7 +19,7 @@ anchor_bottom = 1.0
 alignment = 1
 
 [node name="Save" type="Button" parent="SaveLoadUI"]
-margin_right = 97.0
+margin_right = 72.0
 margin_bottom = 44.0
 rect_min_size = Vector2( 60, 30 )
 size_flags_horizontal = 3
@@ -27,8 +27,8 @@ text = "Save"
 flat = true
 
 [node name="Load" type="Button" parent="SaveLoadUI"]
-margin_left = 101.0
-margin_right = 198.0
+margin_left = 76.0
+margin_right = 148.0
 margin_bottom = 44.0
 rect_min_size = Vector2( 60, 30 )
 size_flags_horizontal = 3
@@ -36,14 +36,25 @@ text = "Load"
 flat = true
 
 [node name="Reset" type="Button" parent="SaveLoadUI"]
-margin_left = 202.0
-margin_right = 300.0
+margin_left = 152.0
+margin_right = 224.0
 margin_bottom = 44.0
 rect_min_size = Vector2( 60, 30 )
 size_flags_horizontal = 3
 text = "Reset"
 flat = true
 
+[node name="Options" type="Button" parent="SaveLoadUI"]
+margin_left = 228.0
+margin_right = 300.0
+margin_bottom = 44.0
+rect_min_size = Vector2( 60, 30 )
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Options"
+flat = true
+
 [connection signal="pressed" from="SaveLoadUI/Save" to="." method="_on_Save_pressed"]
 [connection signal="pressed" from="SaveLoadUI/Load" to="." method="_on_Load_pressed"]
 [connection signal="pressed" from="SaveLoadUI/Reset" to="." method="_on_Reset_pressed"]
+[connection signal="pressed" from="SaveLoadUI/Options" to="." method="_on_Options_pressed"]

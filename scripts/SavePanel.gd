@@ -11,6 +11,10 @@ extends Panel
 signal save_pressed
 signal load_pressed
 signal reset_pressed
+signal options_pressed(toggled)
+
+
+onready var options_button = $SaveLoadUI/Options
 
 
 # Passthrough: save
@@ -26,4 +30,13 @@ func _on_Load_pressed() -> void:
 # Passthrough: reset
 func _on_Reset_pressed() -> void:
 	emit_signal("reset_pressed")
+
+
+# Passthrough: options
+func _on_Options_pressed() -> void:
+	emit_signal("options_pressed", options_button.pressed)
+	if options_button.pressed:
+		options_button.text = "Back"
+	else:
+		options_button.text = "Options"
 

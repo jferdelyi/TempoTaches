@@ -45,7 +45,9 @@ static func save_data_exists() -> bool:
 
 # Load data
 static func load_data() -> Resource:
-	return ResourceLoader.load(get_save_path(), "", true)
+	if ResourceLoader.exists(get_save_path()):
+		return ResourceLoader.load(get_save_path(), "", true)
+	return null
 
 
 # This function allows us to save and load a text resource in debug builds and a
