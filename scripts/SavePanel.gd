@@ -14,8 +14,9 @@ signal reset_pressed
 signal options_pressed(toggled)
 
 
-onready var options_button = $SaveLoadUI/Options
-
+onready var _options_button = $SaveLoadUI/Options
+onready var _red_cross = preload("res://assets/ui/RedCross.svg")
+onready var _cog = preload("res://assets/ui/Cog.svg")
 
 # Passthrough: save
 func _on_Save_pressed() -> void:
@@ -34,9 +35,9 @@ func _on_Reset_pressed() -> void:
 
 # Passthrough: options
 func _on_Options_pressed() -> void:
-	emit_signal("options_pressed", options_button.pressed)
-	if options_button.pressed:
-		options_button.text = "Back"
+	emit_signal("options_pressed", _options_button.pressed)
+	if _options_button.pressed:
+		_options_button.icon = _red_cross
 	else:
-		options_button.text = "Options"
+		_options_button.icon = _cog
 

@@ -160,14 +160,13 @@ func _on_StartPause_pressed() -> void:
 		_start.text = "Pause"
 		_disable_spin_boxes()
 		_state = STARTED
-		_default_time = _inner_time
 		_time_left.visible = true
 		
 	else:
 		_start.text = "Start"
 		_enable_spin_boxes()
 		_state = PAUSED
-		_time_left.visible = false
+		_time_left.visible = true
 	
 	_pu_de_temps.stop()
 	_pu_de_temps.volume_db = 0
