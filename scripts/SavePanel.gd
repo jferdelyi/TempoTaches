@@ -15,7 +15,7 @@ signal options_pressed(toggled)
 
 
 onready var _options_button = $SaveLoadUI/Options
-onready var _red_cross = preload("res://assets/ui/RedCross.svg")
+onready var _red_cross = preload("res://assets/ui/Back.svg")
 onready var _cog = preload("res://assets/ui/Cog.svg")
 
 # Passthrough: save

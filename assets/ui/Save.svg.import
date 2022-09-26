@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/RedCross.svg-88b1fc1a4631e574e2e734b18298ee42.stex"
+path="res://.import/Save.svg-e202f00f48c47a318ad2b50cfef6a7b5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/RedCross.svg"
-dest_files=[ "res://.import/RedCross.svg-88b1fc1a4631e574e2e734b18298ee42.stex" ]
+source_file="res://assets/ui/Save.svg"
+dest_files=[ "res://.import/Save.svg-e202f00f48c47a318ad2b50cfef6a7b5.stex" ]
 
 [params]
 

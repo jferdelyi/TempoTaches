@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scripts/SavePanel.gd" type="Script" id=1]
 [ext_resource path="res://assets/ui/Cog.svg" type="Texture" id=2]
+[ext_resource path="res://assets/ui/Reset.svg" type="Texture" id=3]
+[ext_resource path="res://assets/ui/Load.svg" type="Texture" id=4]
+[ext_resource path="res://assets/ui/Save.svg" type="Texture" id=5]
 
 [node name="SavePanel" type="Panel"]
 anchor_left = 0.5
@@ -24,8 +27,9 @@ margin_right = 72.0
 margin_bottom = 44.0
 rect_min_size = Vector2( 60, 30 )
 size_flags_horizontal = 3
-text = "Save"
+icon = ExtResource( 5 )
 flat = true
+icon_align = 1
 
 [node name="Load" type="Button" parent="SaveLoadUI"]
 margin_left = 76.0
@@ -33,8 +37,9 @@ margin_right = 148.0
 margin_bottom = 44.0
 rect_min_size = Vector2( 60, 30 )
 size_flags_horizontal = 3
-text = "Load"
+icon = ExtResource( 4 )
 flat = true
+icon_align = 1
 
 [node name="Reset" type="Button" parent="SaveLoadUI"]
 margin_left = 152.0
@@ -42,8 +47,9 @@ margin_right = 224.0
 margin_bottom = 44.0
 rect_min_size = Vector2( 60, 30 )
 size_flags_horizontal = 3
-text = "Reset"
+icon = ExtResource( 3 )
 flat = true
+icon_align = 1
 
 [node name="Options" type="Button" parent="SaveLoadUI"]
 margin_left = 228.0

@@ -12,9 +12,14 @@ onready var _chrono : Control = $Container/Chrono
 onready var _main : Panel = $Container/MainPanel
 onready var _sound_options : Panel = $Options/SoundOptions
 onready var _record_options : Panel = $Options/RecordOptions
+onready var _options : VBoxContainer = $Options
+onready var _container : VBoxContainer = $Container
+onready var _tween = Tween.new()
+
 
 # Load data on startup
 func _ready() -> void:
+	add_child(_tween)
 	_load_data()
 
 
@@ -79,9 +84,23 @@ func _on_RecordOptions_hs_sound_updated(new_sound : AudioStream) -> void:
 
 func _on_Options_pressed(toggled : bool) -> void:
 	if not toggled:
-		$Options.rect_position.x = -330
-		$Container.rect_position.x = 10
+		_tween.interpolate_property(
+			_container, "rect_position", 
+			Vector2(-330,10), Vector2(10, 10), 0.5,
+			Tween.TRANS_QUAD, Tween.EASE_OUT)
+		_tween.interpolate_property(
+			_options, "rect_position", 
+			Vector2(10, 10), Vector2(330,10), 0.5,
+			Tween.TRANS_QUAD, Tween.EASE_OUT)
+		_tween.start()
 	else:
-		$Options.rect_position.x = 10
-		$Container.rect_position.x = 330
+		_tween.interpolate_property(
+			_container, "rect_position", 
+			Vector2(10, 10), Vector2(-330, 10), 0.5,
+			Tween.TRANS_QUAD, Tween.EASE_OUT)
+		_tween.interpolate_property(
+			_options, "rect_position", 
+			Vector2(330,10), Vector2(10,10), 0.5,
+			Tween.TRANS_QUAD, Tween.EASE_OUT)
+		_tween.start()
 
