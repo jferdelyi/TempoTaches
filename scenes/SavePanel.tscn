@@ -1,66 +1,62 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene format=3 uid="uid://juw6u75hpv3j"]
 
-[ext_resource path="res://scripts/SavePanel.gd" type="Script" id=1]
-[ext_resource path="res://assets/ui/Cog.svg" type="Texture" id=2]
-[ext_resource path="res://assets/ui/Reset.svg" type="Texture" id=3]
-[ext_resource path="res://assets/ui/Load.svg" type="Texture" id=4]
-[ext_resource path="res://assets/ui/Save.svg" type="Texture" id=5]
+[ext_resource type="Script" uid="uid://cb1xq8o3703vg" path="res://scripts/SavePanel.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://cyr05jl0x5so7" path="res://assets/ui/Cog.svg" id="2"]
+[ext_resource type="Texture2D" uid="uid://bf1natwr6ryw7" path="res://assets/ui/Reset.svg" id="3"]
+[ext_resource type="Texture2D" uid="uid://d1dxnb2dmblkf" path="res://assets/ui/Load.svg" id="4"]
+[ext_resource type="Texture2D" uid="uid://cxh48bgpnid86" path="res://assets/ui/Save.svg" id="5"]
 
-[node name="SavePanel" type="Panel"]
+[node name="SavePanel" type="Panel" unique_id=1352420481]
+anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -150.0
-margin_top = -54.0
-margin_right = 150.0
-margin_bottom = -10.0
-script = ExtResource( 1 )
+offset_left = -150.0
+offset_top = -54.0
+offset_right = 150.0
+offset_bottom = -10.0
+script = ExtResource("1")
+with_options = false
 
-[node name="SaveLoadUI" type="HBoxContainer" parent="."]
+[node name="SaveLoadUI" type="HBoxContainer" parent="." unique_id=274326593]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 alignment = 1
 
-[node name="Save" type="Button" parent="SaveLoadUI"]
-margin_right = 72.0
-margin_bottom = 44.0
-rect_min_size = Vector2( 60, 30 )
+[node name="Save" type="Button" parent="SaveLoadUI" unique_id=678517326]
+custom_minimum_size = Vector2(60, 30)
+layout_mode = 2
 size_flags_horizontal = 3
-icon = ExtResource( 5 )
+icon = ExtResource("5")
 flat = true
-icon_align = 1
+icon_alignment = 1
 
-[node name="Load" type="Button" parent="SaveLoadUI"]
-margin_left = 76.0
-margin_right = 148.0
-margin_bottom = 44.0
-rect_min_size = Vector2( 60, 30 )
+[node name="Load" type="Button" parent="SaveLoadUI" unique_id=664751477]
+custom_minimum_size = Vector2(60, 30)
+layout_mode = 2
 size_flags_horizontal = 3
-icon = ExtResource( 4 )
+icon = ExtResource("4")
 flat = true
-icon_align = 1
+icon_alignment = 1
 
-[node name="Reset" type="Button" parent="SaveLoadUI"]
-margin_left = 152.0
-margin_right = 224.0
-margin_bottom = 44.0
-rect_min_size = Vector2( 60, 30 )
+[node name="Reset" type="Button" parent="SaveLoadUI" unique_id=155145901]
+custom_minimum_size = Vector2(60, 30)
+layout_mode = 2
 size_flags_horizontal = 3
-icon = ExtResource( 3 )
+icon = ExtResource("3")
 flat = true
-icon_align = 1
+icon_alignment = 1
 
-[node name="Options" type="Button" parent="SaveLoadUI"]
-margin_left = 228.0
-margin_right = 300.0
-margin_bottom = 44.0
-rect_min_size = Vector2( 60, 30 )
+[node name="Options" type="Button" parent="SaveLoadUI" unique_id=1450640762]
+custom_minimum_size = Vector2(60, 30)
+layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
-icon = ExtResource( 2 )
+icon = ExtResource("2")
 flat = true
-icon_align = 1
+icon_alignment = 1
 
 [connection signal="pressed" from="SaveLoadUI/Save" to="." method="_on_Save_pressed"]
 [connection signal="pressed" from="SaveLoadUI/Load" to="." method="_on_Load_pressed"]

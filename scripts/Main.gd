@@ -6,20 +6,19 @@ extends Control
 
 # Private variables
 var _save := SaveLoad.new()
+var _tween : Tween
 
-onready var _popup : Control = $Popup
-onready var _chrono : Control = $Container/Chrono
-onready var _main : Panel = $Container/MainPanel
-onready var _sound_options : Panel = $Options/SoundOptions
-onready var _record_options : Panel = $Options/RecordOptions
-onready var _options : VBoxContainer = $Options
-onready var _container : VBoxContainer = $Container
-onready var _tween = Tween.new()
+@onready var _popup : Control = $Popup
+@onready var _chrono : Control = $Container/Chrono
+@onready var _main : MarginContainer = $Container/MainPanel
+@onready var _sound_options : Panel = $Options/SoundOptions
+@onready var _record_options : Panel = $Options/RecordOptions
+@onready var _options : VBoxContainer = $Options
+@onready var _container : VBoxContainer = $Container
 
 
 # Load data on startup
 func _ready() -> void:
-	add_child(_tween)
 	_load_data()
 
 
@@ -28,8 +27,10 @@ func _load_data() -> void:
 	var saved_data = SaveLoad.load_data()
 	if saved_data != null:
 		_chrono.load_data(saved_data)
-		_sound_options.load_data(saved_data)
-		_record_options.load_data(saved_data)
+		if _sound_options:
+			_sound_options.load_data(saved_data)
+		if _record_options:
+			_record_options.load_data(saved_data)
 	else:
 		_on_SavePanel_reset_pressed()
 
@@ -83,24 +84,28 @@ func _on_RecordOptions_hs_sound_updated(new_sound : AudioStream) -> void:
 
 
 func _on_Options_pressed(toggled : bool) -> void:
+	if _tween:
+		_tween.stop()
+		_tween.kill()
+		_tween = null
+	_tween = create_tween()
 	if not toggled:
-		_tween.interpolate_property(
-			_container, "rect_position", 
-			Vector2(-330,10), Vector2(10, 10), 0.5,
-			Tween.TRANS_QUAD, Tween.EASE_OUT)
-		_tween.interpolate_property(
-			_options, "rect_position", 
-			Vector2(10, 10), Vector2(330,10), 0.5,
-			Tween.TRANS_QUAD, Tween.EASE_OUT)
-		_tween.start()
+		_tween.tween_property(
+			_container, "position", 
+			Vector2(10, 10), 
+			0.5).from(Vector2(-330,10)).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		_tween.parallel().tween_property(
+			_options, "position", 
+			Vector2(330,10), 
+			0.5).from(Vector2(10,10)).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		_tween.play()
 	else:
-		_tween.interpolate_property(
-			_container, "rect_position", 
-			Vector2(10, 10), Vector2(-330, 10), 0.5,
-			Tween.TRANS_QUAD, Tween.EASE_OUT)
-		_tween.interpolate_property(
-			_options, "rect_position", 
-			Vector2(330,10), Vector2(10,10), 0.5,
-			Tween.TRANS_QUAD, Tween.EASE_OUT)
-		_tween.start()
-
+		_tween.tween_property(
+			_container, "position", 
+			Vector2(-330,10), 
+			0.5).from(Vector2(10,10)).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		_tween.parallel().tween_property(
+			_options, "position", 
+			Vector2(10, 10), 
+			0.5).from(Vector2(330,10)).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		_tween.play()

@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/PuDeTemps.wav-1903e56a20e1c1fa8a0359097feb6eda.sample"
+type="AudioStreamWAV"
+uid="uid://kw3mqpxjok7e"
+path="res://.godot/imported/PuDeTemps.wav-1903e56a20e1c1fa8a0359097feb6eda.sample"
 
 [deps]
 
 source_file="res://assets/audio/PuDeTemps.wav"
-dest_files=[ "res://.import/PuDeTemps.wav-1903e56a20e1c1fa8a0359097feb6eda.sample" ]
+dest_files=["res://.godot/imported/PuDeTemps.wav-1903e56a20e1c1fa8a0359097feb6eda.sample"]
 
 [params]
 

@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://bi8ys3cxxj77x"]
+
+[ext_resource type="Script" uid="uid://c6muaarhyuelw" path="res://scripts/MainLight.gd" id="1_lkhru"]
+[ext_resource type="PackedScene" uid="uid://evouc65h8cgj" path="res://scenes/components/TextPanel.tscn" id="10_eyctg"]
+[ext_resource type="PackedScene" uid="uid://gdj8byubkabn" path="res://scenes/Chrono.tscn" id="11_3fslq"]
+[ext_resource type="PackedScene" uid="uid://dwm5g1d6vcxnm" path="res://scenes/MainPanel.tscn" id="12_x6cgn"]
+[ext_resource type="PackedScene" uid="uid://juw6u75hpv3j" path="res://scenes/SavePanel.tscn" id="13_co2d6"]
+[ext_resource type="PackedScene" uid="uid://byvlmwm67b8h" path="res://scenes/components/Popup.tscn" id="14_qsw4b"]
+
+[node name="MainLight" type="Control" unique_id=571773277]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -320.0
+offset_right = 160.0
+offset_bottom = 320.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+focus_mode = 2
+script = ExtResource("1_lkhru")
+
+[node name="Container" type="VBoxContainer" parent="." unique_id=1224913788]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 310.0
+offset_bottom = 575.0
+
+[node name="HeaderPanel" parent="Container" unique_id=1505370440 instance=ExtResource("10_eyctg")]
+custom_minimum_size = Vector2(300, 65)
+layout_mode = 2
+text = "Pensez à valider votre ...
+et à faire vivre vos ..."
+
+[node name="Chrono" parent="Container" unique_id=2028640033 instance=ExtResource("11_3fslq")]
+custom_minimum_size = Vector2(300, 153)
+layout_mode = 2
+
+[node name="MainPanel" parent="Container" unique_id=1259452839 instance=ExtResource("12_x6cgn")]
+layout_mode = 2
+
+[node name="SavePanel" parent="." unique_id=1445672686 instance=ExtResource("13_co2d6")]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 10.0
+offset_top = 580.0
+offset_right = 310.0
+offset_bottom = 630.0
+
+[node name="Popup" parent="." unique_id=583308425 instance=ExtResource("14_qsw4b")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.652
+anchor_right = 1.652
+anchor_bottom = 0.0
+offset_left = -531.64
+offset_top = 224.0
+offset_right = -207.64001
+offset_bottom = 259.0
+animation_duration = 0.5
+
+[connection signal="load_pressed" from="SavePanel" to="." method="_on_SavePanel_load_pressed"]
+[connection signal="reset_pressed" from="SavePanel" to="." method="_on_SavePanel_reset_pressed"]
+[connection signal="save_pressed" from="SavePanel" to="." method="_on_SavePanel_save_pressed"]

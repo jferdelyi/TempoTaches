@@ -12,33 +12,33 @@ signal reset_pressed
 
 
 # See the get_save_path() function below
-const SAVE_PATH = "user://save"
+const SAVE_PATH := "user://save"
 
 
 # Data to save
-export var reverb_value : float
-export var pitch_value : float
-export var delay_value : bool
+@export var reverb_value: float
+@export var pitch_value: float
+@export var delay_value: bool
 
-export var minutes_value : float
-export var seconds_value : float
+@export var minutes_value: float
+@export var seconds_value: float
 
-export var tempo_sound : AudioStream
-export var taches_sound : AudioStream
-export var temps_sound : AudioStream
-export var hs_sound : AudioStream
-export var cra_sound : AudioStream
+@export var tempo_sound: AudioStream
+@export var taches_sound: AudioStream
+@export var temps_sound: AudioStream
+@export var hs_sound: AudioStream
+@export var cra_sound: AudioStream
 
-export var trim_value : int
+@export var trim_value: int
 
 
-# Save data (return error code)
+# Save data
 func save_data() -> void:
-	if ResourceSaver.save(get_save_path(), self) != 0:
+	if ResourceSaver.save(self, get_save_path()) != OK:
 		printerr("Error while saving data")
 
 
-# Save data and return if the ressource exists
+# Save data and return if the resource exists
 static func save_data_exists() -> bool:
 	return ResourceLoader.exists(get_save_path())
 
@@ -46,12 +46,11 @@ static func save_data_exists() -> bool:
 # Load data
 static func load_data() -> Resource:
 	if ResourceLoader.exists(get_save_path()):
-		return ResourceLoader.load(get_save_path(), "", true)
+		return ResourceLoader.load(get_save_path())
 	return null
 
 
-# This function allows us to save and load a text resource in debug builds and a
-# binary resource in the released product
+# Save path (text in debug, binary in release)
 static func get_save_path() -> String:
 	var extension := ".tres" if OS.is_debug_build() else ".res"
 	return SAVE_PATH + extension
@@ -70,4 +69,3 @@ func _on_Load_pressed() -> void:
 # Passthrough: reset
 func _on_Reset_pressed() -> void:
 	emit_signal("reset_pressed")
-

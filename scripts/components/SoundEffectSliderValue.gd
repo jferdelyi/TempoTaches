@@ -1,3 +1,4 @@
+@tool
 # Slider used to manipulate one real audio property
 #
 # Choose the bus and effect index by referring to the "audio" tab
@@ -7,9 +8,9 @@ extends SliderValue
 
 
 # Exposed variables
-export var audio_bus_index : int
-export var audio_effect_index : int
-export var audio_property : String
+@export var audio_bus_index : int
+@export var audio_effect_index : int
+@export var audio_property : String
 
 
 # Private variables
@@ -21,4 +22,3 @@ func _on_SoundEffectSliderValue_value_changed(new_value : float) -> void:
 	if _audio_effect == null:
 		_audio_effect = AudioServer.get_bus_effect(audio_bus_index, audio_effect_index)
 	_audio_effect.set(audio_property, new_value)
-

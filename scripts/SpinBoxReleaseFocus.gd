@@ -5,7 +5,7 @@ extends SpinBox
 
 
 # Private variables
-onready var _line = get_line_edit()
+@onready var _line = get_line_edit()
 
 
 # Return true if the pos is in
@@ -19,4 +19,3 @@ func _is_pos_in(checkpos : Vector2) -> bool:
 func _input(event) -> void:
 	if event is InputEventMouseButton and not _is_pos_in(event.position):
 		_line.release_focus()
-

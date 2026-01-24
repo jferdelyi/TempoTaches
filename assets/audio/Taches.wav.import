@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Taches.wav-79e72d9595183ee47e19a784a53970f2.sample"
+type="AudioStreamWAV"
+uid="uid://b6ss3wjwcit5k"
+path="res://.godot/imported/Taches.wav-79e72d9595183ee47e19a784a53970f2.sample"
 
 [deps]
 
 source_file="res://assets/audio/Taches.wav"
-dest_files=[ "res://.import/Taches.wav-79e72d9595183ee47e19a784a53970f2.sample" ]
+dest_files=["res://.godot/imported/Taches.wav-79e72d9595183ee47e19a784a53970f2.sample"]
 
 [params]
 

@@ -8,14 +8,14 @@ signal value_changed(new_value)
 
 
 # Exposed variables
-export var value_name : String
-export var default_value : bool
+@export var value_name : String
+@export var default_value : bool
 
 
 # Private variables (oldschool passthrough see TextPanel)
-onready var _name_label : Label = $Name
-onready var _button : Button = $Button
-onready var _reset : Button = $Reset
+@onready var _name_label : Label = $Name
+@onready var _button : Button = $Button
+@onready var _reset : Button = $Reset
 
 
 # Set default value, label name and the min/max values
@@ -26,12 +26,12 @@ func _ready() -> void:
 
 # Set value 
 func set_value(value: bool) -> void:
-	_button.pressed = value
+	_button.button_pressed = value
 
 
 # Get value
 func get_value() -> bool:
-	return _button.pressed
+	return _button.button_pressed
 
 
 # Reset value
@@ -51,4 +51,3 @@ func _on_Button_toggled(value: bool) -> void:
 # Reset pressed
 func _on_Reset_pressed() -> void:
 	reset_value()
-

@@ -1,120 +1,104 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene format=3 uid="uid://gdj8byubkabn"]
 
-[ext_resource path="res://assets/fonts/Montserrat-Bold.tres" type="DynamicFont" id=1]
-[ext_resource path="res://scripts/Chrono.gd" type="Script" id=2]
-[ext_resource path="res://scripts/SpinBoxReleaseFocus.gd" type="Script" id=5]
+[ext_resource type="FontFile" path="res://assets/fonts/Montserrat-Bold.tres" id="1"]
+[ext_resource type="Script" uid="uid://hmn6vcdyhrio" path="res://scripts/Chrono.gd" id="2"]
+[ext_resource type="AudioStream" uid="uid://kw3mqpxjok7e" path="res://assets/audio/PuDeTemps.wav" id="4_sv36f"]
+[ext_resource type="Script" uid="uid://dgmcb03apgkdt" path="res://scripts/SpinBoxReleaseFocus.gd" id="5"]
+[ext_resource type="AudioStream" uid="uid://cdflws6qhb06p" path="res://assets/audio/HS.wav" id="5_gnsly"]
 
-[sub_resource type="Theme" id=4]
-default_font = ExtResource( 1 )
+[sub_resource type="Theme" id="4"]
+default_font = ExtResource("1")
 
-[sub_resource type="Theme" id=5]
-default_font = ExtResource( 1 )
+[sub_resource type="Theme" id="5"]
+default_font = ExtResource("1")
 
-[node name="Chrono" type="Panel"]
-anchor_right = 1.0
-anchor_bottom = 0.223438
-margin_bottom = 10.0
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": true
-}
+[node name="Chrono" type="MarginContainer" unique_id=744656544]
+offset_right = 204.0
+offset_bottom = 128.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+script = ExtResource("2")
 
-[node name="Container" type="VBoxContainer" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 10.0
-margin_top = 10.0
-margin_right = -10.0
-margin_bottom = -10.0
+[node name="Container" type="VBoxContainer" parent="." unique_id=551463064]
+layout_mode = 2
 
-[node name="Time" type="HBoxContainer" parent="Container"]
-margin_right = 300.0
-margin_bottom = 51.0
-rect_min_size = Vector2( 0, 40 )
+[node name="Time" type="HBoxContainer" parent="Container" unique_id=1205010105]
+layout_mode = 2
 
-[node name="Minutes" type="SpinBox" parent="Container/Time"]
-margin_right = 148.0
-margin_bottom = 51.0
-rect_min_size = Vector2( 0, 40 )
+[node name="Minutes" type="SpinBox" parent="Container/Time" unique_id=1729748175]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = SubResource( 4 )
+theme = SubResource("4")
 max_value = 60.0
 value = 1.0
-align = 2
 suffix = "m"
-script = ExtResource( 5 )
+script = ExtResource("5")
 
-[node name="Seconds" type="SpinBox" parent="Container/Time"]
-margin_left = 152.0
-margin_right = 300.0
-margin_bottom = 51.0
-rect_min_size = Vector2( 0, 40 )
+[node name="Seconds" type="SpinBox" parent="Container/Time" unique_id=473978116]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = SubResource( 5 )
+theme = SubResource("5")
 max_value = 59.0
 value = 30.0
-align = 2
 suffix = "s"
-script = ExtResource( 5 )
+script = ExtResource("5")
 
-[node name="ProgressBar" type="ProgressBar" parent="Container"]
-margin_top = 55.0
-margin_right = 300.0
-margin_bottom = 95.0
-rect_min_size = Vector2( 0, 40 )
+[node name="ProgressBar" type="ProgressBar" parent="Container" unique_id=1541806928]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
 step = 0.001
 rounded = true
-percent_visible = false
+show_percentage = false
 
-[node name="TimeLeft" type="Label" parent="Container/ProgressBar"]
+[node name="TimeLeft" type="Label" parent="Container/ProgressBar" unique_id=1906676199]
 visible = false
+layout_mode = 0
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -32.0
-margin_top = -12.0
-margin_right = 32.0
-margin_bottom = 2.0
+offset_left = -32.0
+offset_top = -12.0
+offset_right = 32.0
+offset_bottom = 2.0
 text = "00:00"
-align = 1
+horizontal_alignment = 1
 
-[node name="Buttons" type="HBoxContainer" parent="Container"]
-margin_top = 99.0
-margin_right = 300.0
-margin_bottom = 139.0
+[node name="Buttons" type="HBoxContainer" parent="Container" unique_id=482581942]
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
 
-[node name="StartPause" type="Button" parent="Container/Buttons"]
-margin_right = 97.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 0, 40 )
+[node name="StartPause" type="Button" parent="Container/Buttons" unique_id=64403630]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
 size_flags_horizontal = 3
 text = "Start"
 
-[node name="Stop" type="Button" parent="Container/Buttons"]
-margin_left = 101.0
-margin_right = 198.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 0, 40 )
+[node name="Stop" type="Button" parent="Container/Buttons" unique_id=1660495960]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
 size_flags_horizontal = 3
 text = "Stop"
 
-[node name="HS" type="Button" parent="Container/Buttons"]
-margin_left = 202.0
-margin_right = 300.0
-margin_bottom = 40.0
+[node name="HS" type="Button" parent="Container/Buttons" unique_id=1839785840]
+layout_mode = 2
 size_flags_horizontal = 3
 text = "HS"
 
-[node name="PuDeTemps" type="AudioStreamPlayer2D" parent="."]
-bus = "Effects"
+[node name="HS" type="AudioStreamPlayer2D" parent="." unique_id=2094664416]
+stream = ExtResource("5_gnsly")
+bus = &"Effects"
 
-[node name="HS" type="AudioStreamPlayer2D" parent="."]
-bus = "Effects"
+[node name="PuDeTemps" type="AudioStreamPlayer2D" parent="." unique_id=1036335356]
+stream = ExtResource("4_sv36f")
+bus = &"Effects"
 
 [connection signal="time_out" from="." to="." method="_on_Chrono_time_out"]
 [connection signal="value_changed" from="Container/Time/Minutes" to="." method="_on_Minutes_value_changed"]

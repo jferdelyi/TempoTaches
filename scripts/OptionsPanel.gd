@@ -5,9 +5,9 @@ extends Panel
 
 
 # Private variables
-onready var _reverb : HBoxContainer = $ScrollUI/UI/Reverb
-onready var _pitch : HBoxContainer = $ScrollUI/UI/Pitch
-onready var _delay : HBoxContainer = $ScrollUI/UI/Delay
+@onready var _reverb : HBoxContainer = $ScrollUI/UI/Reverb
+@onready var _pitch : HBoxContainer = $ScrollUI/UI/Pitch
+@onready var _delay : HBoxContainer = $ScrollUI/UI/Delay
 
 
 # Load data from ressource
@@ -34,4 +34,3 @@ func reset_value() -> void:
 # Reset button pressed
 func _on_Reset_pressed() -> void:
 	reset_value()
-

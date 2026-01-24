@@ -1,20 +1,13 @@
 # Main panel
 #
 # Use to play Tempo/Taches and CRA if active
-extends Panel
+extends MarginContainer
 
 
 # Private variables
-onready var _taches_sound : AudioStreamPlayer2D = $Buttons/Taches/TachesSound
-onready var _tempo_sound : AudioStreamPlayer2D = $Buttons/Tempo/TempoSound
-onready var _cra_sound : AudioStreamPlayer2D = $Buttons/CRA/CRASound
-onready var _cra_button : Button = $Buttons/CRA
-
-
-func _ready() -> void:
-	var time : Dictionary = OS.get_datetime()
-	if time["day"] >= 25 or time["day"] <= 4:
-		_cra_button.visible = true
+@onready var _taches_sound : AudioStreamPlayer2D = $ButtonsV/ButtonsH/Taches/TachesSound
+@onready var _tempo_sound : AudioStreamPlayer2D = $ButtonsV/ButtonsH/Tempo/TempoSound
+@onready var _cra_sound : AudioStreamPlayer2D = $ButtonsV/CRA/CRASound
 
 
 # Set tempo Sound
@@ -60,4 +53,3 @@ func _on_Taches_pressed() -> void:
 # Play CRA sound
 func _on_CRA_pressed() -> void:
 	_cra_sound.play()
-

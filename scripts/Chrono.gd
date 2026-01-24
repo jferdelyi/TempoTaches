@@ -1,7 +1,7 @@
 # Chrono page
 #
 # If the chrono is not enable, the timer can be set
-extends Control
+extends MarginContainer
 
 
 # Timeout signal
@@ -9,19 +9,17 @@ signal time_out
 
 
 # Private variables
-onready var _minutes_spin_box : SpinBox = $Container/Time/Minutes
-onready var _seconds_spin_box : SpinBox = $Container/Time/Seconds
-onready var _progress : ProgressBar = $Container/ProgressBar
-onready var _time_left : Label = $Container/ProgressBar/TimeLeft
-onready var _pu_de_temps : AudioStreamPlayer2D = $PuDeTemps
-onready var _hs : AudioStreamPlayer2D = $HS
-onready var _start : Button = $Container/Buttons/StartPause
+@onready var _minutes_spin_box : SpinBox = $Container/Time/Minutes
+@onready var _seconds_spin_box : SpinBox = $Container/Time/Seconds
+@onready var _progress : ProgressBar = $Container/ProgressBar
+@onready var _time_left : Label = $Container/ProgressBar/TimeLeft
+@onready var _pu_de_temps : AudioStreamPlayer2D = $PuDeTemps
+@onready var _hs : AudioStreamPlayer2D = $HS
+@onready var _start : Button = $Container/Buttons/StartPause
 
 var _default_time : float = 90.0
 var _end_time : float = 90.0
 var _inner_time : float = 0.0
-
-var _initialized : bool = false
 
 # State machine
 const STOPPED : int = 0
@@ -224,8 +222,8 @@ func _set_spin_boxes(time : float) -> void:
 # Format inner time
 func _inner_time_format() -> void:
 	var tmp : float = _inner_time / 60.0
-	var minutes : float = floor(tmp)
-	var seconds : float = ceil((tmp - minutes) * 60)
+	var minutes : int = floor(tmp)
+	var seconds : int = ceil((tmp - minutes) * 60)
 	
 	if minutes == 0 and seconds == 60:
 		minutes = 1
@@ -251,4 +249,3 @@ func _set_time(minutes : float, seconds : float) -> void:
 	else:
 		_seconds_spin_box.value = seconds
 	_compute_inner_time()
-

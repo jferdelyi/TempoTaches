@@ -1,51 +1,46 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene format=3 uid="uid://dcthriacku0r0"]
 
-[ext_resource path="res://scripts/components/SliderValue.gd" type="Script" id=1]
-[ext_resource path="res://assets/ui/Reset.svg" type="Texture" id=2]
+[ext_resource type="Script" uid="uid://cinvudq25pria" path="res://scripts/components/SliderValue.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://bf1natwr6ryw7" path="res://assets/ui/Reset.svg" id="2"]
 
-[sub_resource type="StyleBoxTexture" id=1]
+[sub_resource type="StyleBoxTexture" id="5"]
 
-[sub_resource type="StyleBoxTexture" id=2]
+[sub_resource type="StyleBoxTexture" id="2"]
 
-[sub_resource type="StyleBoxTexture" id=3]
+[sub_resource type="StyleBoxTexture" id="1"]
 
-[sub_resource type="StyleBoxTexture" id=4]
+[sub_resource type="StyleBoxTexture" id="4"]
 
-[sub_resource type="StyleBoxTexture" id=5]
+[sub_resource type="StyleBoxTexture" id="3"]
 
-[node name="SliderValue" type="HBoxContainer"]
+[node name="SliderValue" type="HBoxContainer" unique_id=804565785]
+anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_top = -10.0
-margin_bottom = 10.0
-rect_pivot_offset = Vector2( 263, 481 )
-script = ExtResource( 1 )
+offset_top = -10.0
+offset_bottom = 10.0
+pivot_offset = Vector2(263, 481)
+script = ExtResource("1")
 
-[node name="Name" type="Label" parent="."]
-margin_top = 3.0
-margin_right = 80.0
-margin_bottom = 17.0
-rect_min_size = Vector2( 80, 0 )
+[node name="Name" type="Label" parent="." unique_id=878304835]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
 text = "Name"
 
-[node name="Reset" type="Button" parent="."]
-margin_left = 84.0
-margin_right = 105.0
-margin_bottom = 20.0
-custom_styles/hover = SubResource( 1 )
-custom_styles/pressed = SubResource( 2 )
-custom_styles/focus = SubResource( 3 )
-custom_styles/disabled = SubResource( 4 )
-custom_styles/normal = SubResource( 5 )
+[node name="Reset" type="Button" parent="." unique_id=1555945711]
+layout_mode = 2
+theme_override_styles/normal = SubResource("5")
+theme_override_styles/pressed = SubResource("2")
+theme_override_styles/hover = SubResource("1")
+theme_override_styles/disabled = SubResource("4")
+theme_override_styles/focus = SubResource("3")
 disabled = true
-icon = ExtResource( 2 )
+icon = ExtResource("2")
 
-[node name="Slider" type="HSlider" parent="."]
-margin_left = 109.0
-margin_right = 320.0
-margin_bottom = 20.0
-rect_min_size = Vector2( 75, 0 )
+[node name="Slider" type="HSlider" parent="." unique_id=1739475103]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 max_value = 0.25

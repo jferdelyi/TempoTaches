@@ -1,3 +1,5 @@
+@tool
+
 # Slider  used to manipulate real property
 class_name SliderValue
 extends Control
@@ -8,16 +10,16 @@ signal value_changed(new_value)
 
 
 # Exposed variables
-export var value_name : String
-export var default_value : float
-export var min_value : float
-export var max_value : float
+@export var value_name : String
+@export var default_value : float
+@export var min_value : float
+@export var max_value : float
 
 
 # Private variables (oldschool passthrough see TextPanel)
-onready var _name_label : Label = $Name
-onready var _slider : Slider = $Slider
-onready var _reset : Button = $Reset
+@onready var _name_label : Label = $Name
+@onready var _slider : Slider = $Slider
+@onready var _reset : Button = $Reset
 
 # Set default value, label name and the min/max values
 func _ready() -> void:

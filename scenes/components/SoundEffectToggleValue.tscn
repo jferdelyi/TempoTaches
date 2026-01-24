@@ -1,10 +1,10 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene format=3 uid="uid://b7vbwy0k4lk0o"]
 
-[ext_resource path="res://scenes/components/ToggleValue.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scripts/components/SoundEffectToggleValue.gd" type="Script" id=2]
+[ext_resource type="PackedScene" uid="uid://dtl3psgvix8l2" path="res://scenes/components/ToggleValue.tscn" id="1"]
+[ext_resource type="Script" uid="uid://s2gj6m1tjd2d" path="res://scripts/components/SoundEffectToggleValue.gd" id="2"]
 
-[node name="SoundEffectToggleValue" instance=ExtResource( 1 )]
-script = ExtResource( 2 )
+[node name="SoundEffectToggleValue" unique_id=1856777155 instance=ExtResource("1")]
+script = ExtResource("2")
 audio_bus_index = 0
 audio_effect_index = 0
 audio_property = ""

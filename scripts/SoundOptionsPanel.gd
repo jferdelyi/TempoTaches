@@ -13,20 +13,20 @@ signal cra_sound_updated(AudioStream)
 
 
 # Exposed variables
-export var default_tempo_audio : AudioStream
-export var default_taches_audio : AudioStream
-export var default_temps_audio : AudioStream
-export var default_hs_audio : AudioStream
-export var default_cra_audio : AudioStream
+@export var default_tempo_audio : AudioStream
+@export var default_taches_audio : AudioStream
+@export var default_temps_audio : AudioStream
+@export var default_hs_audio : AudioStream
+@export var default_cra_audio : AudioStream
 
 
 # Privates variables
-onready var _tempo : HBoxContainer = $ScrollUI/UI/Tempo
-onready var _taches : HBoxContainer = $ScrollUI/UI/Taches
-onready var _temps : HBoxContainer = $ScrollUI/UI/PuDeTemps
-onready var _hs : HBoxContainer = $ScrollUI/UI/HS
-onready var _cra : HBoxContainer = $ScrollUI/UI/CRA
-onready var _trim_threshold : HBoxContainer = $ScrollUI/UI/TrimValue
+@onready var _tempo : HBoxContainer = $ScrollUI/UI/Tempo
+@onready var _taches : HBoxContainer = $ScrollUI/UI/Taches
+@onready var _temps : HBoxContainer = $ScrollUI/UI/PuDeTemps
+@onready var _hs : HBoxContainer = $ScrollUI/UI/HS
+@onready var _cra : HBoxContainer = $ScrollUI/UI/CRA
+@onready var _trim_threshold : HBoxContainer = $ScrollUI/UI/TrimValue
 
 
 # Init panel
@@ -36,10 +36,10 @@ func _ready() -> void:
 	_temps.default_audio = default_temps_audio
 	_hs.default_audio = default_hs_audio
 	_cra.default_audio = default_cra_audio
-	var time : Dictionary = OS.get_datetime()
-	if time["day"] >= 25 or time["day"] <= 4:
-		_cra.visible = true
-	if _trim_threshold.connect("value_changed", self, "_on_TrimValue_value_changed"):
+	#var time : Dictionary = Time.get_datetime_dict_from_system()
+	#if time["day"] >= 25 or time["day"] <= 4:
+	#	_cra.visible = true
+	if _trim_threshold.connect("value_changed", Callable(self, "_on_TrimValue_value_changed")):
 		printerr("Connect error: value_changed of _trim_threshold in RecordOptionsPanel")
 	_on_TrimValue_value_changed(_trim_threshold.get_value())
 
@@ -111,4 +111,3 @@ func _on_HS_sound_updated(audio : AudioStream) -> void:
 # CRA sound updates
 func _on_CRA_sound_updated(audio : AudioStream) -> void:
 	emit_signal("cra_sound_updated", audio)
-
