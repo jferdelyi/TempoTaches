@@ -4,5 +4,4 @@
 
 This repo is a private joke
 
-Available in Play Store:
-https://play.google.com/store/apps/details?id=org.godotengine.tempotches
+Available in Play Store again soon, [here](https://tempo-taches.netlify.app/) this is a light version of Tempo Tâches.
