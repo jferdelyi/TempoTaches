@@ -39,22 +39,47 @@ max_value = 32768.0
 [node name="Tempo" parent="ScrollUI/UI" unique_id=1884122613 instance=ExtResource("1")]
 layout_mode = 2
 text = "Tempo"
+skip_ms = 300
+vibration_enabled = null
+vibration_ms = null
+vibration_amplitude = null
+web_timeout_ms = null
 
 [node name="Taches" parent="ScrollUI/UI" unique_id=110317141 instance=ExtResource("1")]
 layout_mode = 2
 text = "Tâches"
+skip_ms = 300
+vibration_enabled = null
+vibration_ms = null
+vibration_amplitude = null
+web_timeout_ms = null
 
 [node name="PuDeTemps" parent="ScrollUI/UI" unique_id=727066174 instance=ExtResource("1")]
 layout_mode = 2
 text = "Temps"
+skip_ms = 300
+vibration_enabled = null
+vibration_ms = null
+vibration_amplitude = null
+web_timeout_ms = null
 
 [node name="HS" parent="ScrollUI/UI" unique_id=1087877932 instance=ExtResource("1")]
 layout_mode = 2
 text = "HS"
+skip_ms = 300
+vibration_enabled = null
+vibration_ms = null
+vibration_amplitude = null
+web_timeout_ms = null
 
 [node name="CRA" parent="ScrollUI/UI" unique_id=124907368 instance=ExtResource("1")]
 layout_mode = 2
 text = "CRA"
+skip_ms = 300
+vibration_enabled = null
+vibration_ms = null
+vibration_amplitude = null
+web_timeout_ms = null
 
 [node name="Reset" type="Button" parent="ScrollUI/UI" unique_id=1810861829]
 layout_mode = 2

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://kd0tkmy8h20m"]
 
 [ext_resource type="PackedScene" uid="uid://dwm5g1d6vcxnm" path="res://scenes/MainPanel.tscn" id="1"]
+[ext_resource type="Theme" uid="uid://cmyn5qrgdyacp" path="res://theme.tres" id="1_mwfav"]
 [ext_resource type="Script" uid="uid://cel67hij2wfwj" path="res://scripts/Main.gd" id="2"]
 [ext_resource type="PackedScene" uid="uid://juw6u75hpv3j" path="res://scenes/SavePanel.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://bf3cnawdov4j2" path="res://scenes/SoundOptionsPanel.tscn" id="4"]
@@ -15,7 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://bfff5lyuwu627" path="res://assets/audio/CRA.wav" id="15"]
 
 [sub_resource type="StyleBoxFlat" id="1"]
-bg_color = Color(0.012617188, 0.012617188, 0.012617188, 1)
+bg_color = Color(1, 1, 1, 0)
 
 [node name="Main" type="Control" unique_id=571773277]
 layout_mode = 3
@@ -33,6 +34,7 @@ grow_vertical = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 focus_mode = 2
+theme = ExtResource("1_mwfav")
 script = ExtResource("2")
 
 [node name="Panel" type="Panel" parent="." unique_id=959781924]
@@ -44,10 +46,10 @@ theme_override_styles/panel = SubResource("1")
 [node name="Options" type="VBoxContainer" parent="." unique_id=773968738]
 custom_minimum_size = Vector2(300, 566)
 layout_mode = 0
-offset_left = 330.0
+offset_left = 350.0
 offset_top = 10.0
-offset_right = 630.0
-offset_bottom = 550.0
+offset_right = 650.0
+offset_bottom = 576.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -98,7 +100,6 @@ offset_left = 10.0
 offset_top = 580.0
 offset_right = 310.0
 offset_bottom = 630.0
-with_options = true
 
 [node name="Popup" parent="." unique_id=583308425 instance=ExtResource("7")]
 layout_mode = 1
@@ -118,6 +119,6 @@ animation_duration = 0.5
 [connection signal="tempo_sound_updated" from="Options/RecordOptions" to="." method="_on_RecordOptions_tempo_sound_updated"]
 [connection signal="temps_sound_updated" from="Options/RecordOptions" to="." method="_on_RecordOptions_temps_sound_updated"]
 [connection signal="load_pressed" from="SavePanel" to="." method="_on_SavePanel_load_pressed"]
-[connection signal="options_pressed" from="SavePanel" to="." method="_on_Options_pressed"]
+[connection signal="options_pressed" from="SavePanel" to="." method="_on_SavePanel_options_pressed"]
 [connection signal="reset_pressed" from="SavePanel" to="." method="_on_SavePanel_reset_pressed"]
 [connection signal="save_pressed" from="SavePanel" to="." method="_on_SavePanel_save_pressed"]

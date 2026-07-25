@@ -1,7 +1,7 @@
 # Main panel
 #
 # Use to play Tempo/Taches and CRA if active
-extends MarginContainer
+extends PanelContainer
 
 
 # Private variables

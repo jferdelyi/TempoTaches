@@ -9,8 +9,8 @@ var _save := SaveLoad.new()
 var _tween : Tween
 
 @onready var _popup : Control = $Popup
-@onready var _chrono : Control = $Container/Chrono
-@onready var _main : MarginContainer = $Container/MainPanel
+@onready var _chrono : PanelContainer = $Container/Chrono
+@onready var _main : PanelContainer = $Container/MainPanel
 @onready var _sound_options : Panel = $Options/SoundOptions
 @onready var _record_options : Panel = $Options/RecordOptions
 @onready var _options : VBoxContainer = $Options
@@ -20,6 +20,8 @@ var _tween : Tween
 # Load data on startup
 func _ready() -> void:
 	_load_data()
+	if OS.has_feature("web"):
+		RenderingServer.set_default_clear_color(Color.BLACK)
 
 
 # Load data
@@ -41,13 +43,45 @@ func _on_SavePanel_load_pressed() -> void:
 	_popup.start("Loaded")
 
 
-# Save data
-func _on_SavePanel_save_pressed() -> void:
-	_chrono.save_data(_save)
-	_sound_options.save_data(_save)
-	_record_options.save_data(_save)
-	_save.save_data()
-	_popup.start("Saved")
+# Open options
+func _on_SavePanel_options_pressed(toggled : bool) -> void:
+	if _tween:
+		_tween.stop()
+		_tween.kill()
+		_tween = null
+	_tween = create_tween()
+	if not toggled:
+		_tween.tween_property(
+			_container, 
+			"position", 
+			Vector2(10, 10), 
+			0.5).from(Vector2(-330,10)).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		_tween.parallel().tween_property(
+			_options, 
+			"position", 
+			Vector2(350,10), 
+			0.5).from(Vector2(10,10)).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		#_tween.parallel().tween_property(
+		#	_options, 
+		#	"modulate",
+		#	Color("FFFFFF00"),
+		#	0.5).from(Color("FFFFFF")).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		_tween.play()
+	else:
+		_tween.tween_property(
+			_container, "position", 
+			Vector2(-330,10), 
+			0.5).from(Vector2(10,10)).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		_tween.parallel().tween_property(
+			_options, "position", 
+			Vector2(10, 10), 
+			0.5).from(Vector2(350,10)).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		#_tween.parallel().tween_property(
+		#	_options, 
+		#	"modulate",
+		#	Color("FFFFFF"),
+		#	0.5).from(Color("FFFFFF00")).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		_tween.play()
 
 
 # Reset default value
@@ -56,6 +90,15 @@ func _on_SavePanel_reset_pressed() -> void:
 	_sound_options.reset_value()
 	_record_options.reset_value()
 	_popup.start("Reset")
+
+
+# Save data
+func _on_SavePanel_save_pressed() -> void:
+	_chrono.save_data(_save)
+	_sound_options.save_data(_save)
+	_record_options.save_data(_save)
+	_save.save_data()
+	_popup.start("Saved")
 
 
 # Set tempo sound
@@ -81,31 +124,3 @@ func _on_RecordOptions_temps_sound_updated(new_sound : AudioStream) -> void:
 # Set HS sound
 func _on_RecordOptions_hs_sound_updated(new_sound : AudioStream) -> void:
 	_chrono.set_hs_sound(new_sound)
-
-
-func _on_Options_pressed(toggled : bool) -> void:
-	if _tween:
-		_tween.stop()
-		_tween.kill()
-		_tween = null
-	_tween = create_tween()
-	if not toggled:
-		_tween.tween_property(
-			_container, "position", 
-			Vector2(10, 10), 
-			0.5).from(Vector2(-330,10)).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
-		_tween.parallel().tween_property(
-			_options, "position", 
-			Vector2(330,10), 
-			0.5).from(Vector2(10,10)).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
-		_tween.play()
-	else:
-		_tween.tween_property(
-			_container, "position", 
-			Vector2(-330,10), 
-			0.5).from(Vector2(10,10)).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
-		_tween.parallel().tween_property(
-			_options, "position", 
-			Vector2(10, 10), 
-			0.5).from(Vector2(330,10)).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
-		_tween.play()

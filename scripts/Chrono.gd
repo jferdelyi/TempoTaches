@@ -1,7 +1,7 @@
 # Chrono page
 #
 # If the chrono is not enable, the timer can be set
-extends MarginContainer
+extends PanelContainer
 
 
 # Timeout signal

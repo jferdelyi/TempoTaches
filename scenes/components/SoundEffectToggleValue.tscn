@@ -9,4 +9,13 @@ audio_bus_index = 0
 audio_effect_index = 0
 audio_property = ""
 
+[node name="Name" parent="." index="0" unique_id=419591609]
+custom_minimum_size = Vector2(82, 0)
+text = ""
+
+[node name="Reset" parent="." index="1" unique_id=1375908687]
+custom_minimum_size = Vector2(30, 0)
+flat = true
+expand_icon = true
+
 [connection signal="value_changed" from="." to="." method="_on_SoundEffectToggleValue_value_changed"]

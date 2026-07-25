@@ -6,7 +6,7 @@
 # save_button.connect("pressed", self, "emit_signal", ["save_pressed"])
 # Because there is no warning and I think it's cleaner.
 # Performance should be the same
-extends Panel
+extends PanelContainer
 
 
 # Signals

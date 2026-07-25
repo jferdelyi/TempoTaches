@@ -6,19 +6,27 @@
 [ext_resource type="Script" uid="uid://dgmcb03apgkdt" path="res://scripts/SpinBoxReleaseFocus.gd" id="5"]
 [ext_resource type="AudioStream" uid="uid://cdflws6qhb06p" path="res://assets/audio/HS.wav" id="5_gnsly"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sv36f"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.0901961, 0.0941176, 0.188235, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
 [sub_resource type="Theme" id="4"]
 default_font = ExtResource("1")
 
 [sub_resource type="Theme" id="5"]
 default_font = ExtResource("1")
 
-[node name="Chrono" type="MarginContainer" unique_id=744656544]
-offset_right = 204.0
-offset_bottom = 128.0
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 5
+[node name="Chrono" type="PanelContainer" unique_id=1439299235]
+offset_right = 274.0
+offset_bottom = 191.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_sv36f")
 script = ExtResource("2")
 
 [node name="Container" type="VBoxContainer" parent="." unique_id=551463064]
@@ -26,9 +34,11 @@ layout_mode = 2
 
 [node name="Time" type="HBoxContainer" parent="Container" unique_id=1205010105]
 layout_mode = 2
+size_flags_vertical = 3
 
 [node name="Minutes" type="SpinBox" parent="Container/Time" unique_id=1729748175]
 custom_minimum_size = Vector2(0, 40)
+propagate_maximum_size = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -40,6 +50,7 @@ script = ExtResource("5")
 
 [node name="Seconds" type="SpinBox" parent="Container/Time" unique_id=473978116]
 custom_minimum_size = Vector2(0, 40)
+propagate_maximum_size = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -52,6 +63,7 @@ script = ExtResource("5")
 [node name="ProgressBar" type="ProgressBar" parent="Container" unique_id=1541806928]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
+size_flags_vertical = 3
 step = 0.001
 rounded = true
 show_percentage = false
@@ -73,21 +85,22 @@ horizontal_alignment = 1
 [node name="Buttons" type="HBoxContainer" parent="Container" unique_id=482581942]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 0
+size_flags_vertical = 3
 
 [node name="StartPause" type="Button" parent="Container/Buttons" unique_id=64403630]
-custom_minimum_size = Vector2(0, 40)
+custom_minimum_size = Vector2(80, 40)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Start"
 
 [node name="Stop" type="Button" parent="Container/Buttons" unique_id=1660495960]
-custom_minimum_size = Vector2(0, 40)
+custom_minimum_size = Vector2(80, 40)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Stop"
 
 [node name="HS" type="Button" parent="Container/Buttons" unique_id=1839785840]
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "HS"

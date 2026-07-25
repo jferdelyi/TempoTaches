@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://d1dxnb2dmblkf" path="res://assets/ui/Load.svg" id="4"]
 [ext_resource type="Texture2D" uid="uid://cxh48bgpnid86" path="res://assets/ui/Save.svg" id="5"]
 
-[node name="SavePanel" type="Panel" unique_id=1352420481]
+[node name="SavePanel" type="PanelContainer" unique_id=1183645153]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -17,12 +17,10 @@ offset_top = -54.0
 offset_right = 150.0
 offset_bottom = -10.0
 script = ExtResource("1")
-with_options = false
 
 [node name="SaveLoadUI" type="HBoxContainer" parent="." unique_id=274326593]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
+layout_mode = 2
+size_flags_vertical = 4
 alignment = 1
 
 [node name="Save" type="Button" parent="SaveLoadUI" unique_id=678517326]
@@ -32,6 +30,7 @@ size_flags_horizontal = 3
 icon = ExtResource("5")
 flat = true
 icon_alignment = 1
+expand_icon = true
 
 [node name="Load" type="Button" parent="SaveLoadUI" unique_id=664751477]
 custom_minimum_size = Vector2(60, 30)
@@ -40,6 +39,7 @@ size_flags_horizontal = 3
 icon = ExtResource("4")
 flat = true
 icon_alignment = 1
+expand_icon = true
 
 [node name="Reset" type="Button" parent="SaveLoadUI" unique_id=155145901]
 custom_minimum_size = Vector2(60, 30)
@@ -48,6 +48,7 @@ size_flags_horizontal = 3
 icon = ExtResource("3")
 flat = true
 icon_alignment = 1
+expand_icon = true
 
 [node name="Options" type="Button" parent="SaveLoadUI" unique_id=1450640762]
 custom_minimum_size = Vector2(60, 30)
@@ -57,6 +58,7 @@ toggle_mode = true
 icon = ExtResource("2")
 flat = true
 icon_alignment = 1
+expand_icon = true
 
 [connection signal="pressed" from="SaveLoadUI/Save" to="." method="_on_Save_pressed"]
 [connection signal="pressed" from="SaveLoadUI/Load" to="." method="_on_Load_pressed"]
